@@ -37,3 +37,7 @@ Cook: 15 m
 Ready In: 20 m
 
 Recipe by: Jay
+
+Allergy Warnings:
+1. Cheese
+2. Milk
