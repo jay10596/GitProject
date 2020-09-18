@@ -36,8 +36,12 @@ Prep: 5 m
 Cook: 15 m
 Ready In: 20 m
 
+<<<<<<< master
 Recipe by: Jay
 
 Allergy Warnings:
 1. Cheese
 2. Milk
+=======
+Recipe by: Jay N. Modi
+>>>>>>> Recipe by changed
