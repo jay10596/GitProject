@@ -46,10 +46,6 @@
             // Get Input from user
             // We can use $_GET["event"] if the method in the above form in get. However, get is not preferable as it displays whatever we submit in the url which makes it less secure than post.
             echo "<br>The " . $_POST["event"] . " is for $" . $_POST["price"];
-
-
-
-
         ?>
     </body>
 </html>
