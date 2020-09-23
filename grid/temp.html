@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+        <title>Title</title>
+    </head>
+
+    <body>
+        <h1>Some other content</h1>
+
+        <div class="container">
+            <button>Start Giving.</button>
+            <button>Start Shoping.</button>
+            <button>Start A Revolution.</button>
+        </div>
+
+        <h1>Some other content</h1>
+    </body>
+</html>
+
+<style>
+    h1 {
+        margin: 0px 20%;
+        background-color: lightblue;
+    }
+
+    .container {
+        margin: 5% 20%;
+        background-color: lightblue;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+    }
+    
+    button {
+        background-color: lightgray;
+        font-family: Monospaced;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
