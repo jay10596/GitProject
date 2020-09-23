@@ -1,0 +1,92 @@
+:root {
+    --gap: 4px;
+}
+
+.container {
+    height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Instead of: 1fr 1fr 1fr 1fr */
+    grid-template-rows: 10% 40% 30% 20%;
+    grid-template-areas:
+        "navbar navbar navbar navbar"
+        "sidebar main main main"
+        "sidebar content1 content2 content3"
+        "sidebar footer footer footer"
+    ;
+    grid-column-gap: var(--gap);
+    grid-row-gap: var(--gap);
+}
+
+.navbar {
+    background-color: mediumseagreen;
+    grid-area: navbar;
+}
+
+.sidebar {
+    background-color: lightseagreen;
+    grid-area: sidebar;
+}
+
+.main {
+    background-color: lightskyblue;
+    grid-area: main;
+
+    overflow-y: scroll;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-column-gap: var(--gap);
+}
+
+.content1 {
+    background-color: dodgerblue;
+    grid-area: content1;
+}
+
+.content2 {
+    background-color: dodgerblue;
+    grid-area: content2;
+}
+
+.content3 {
+    background-color: dodgerblue;
+    grid-area: content3;
+}
+
+.footer {
+    background-color: royalblue;
+    grid-area: footer;
+}
+
+.navbar, .sidebar, .footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    width: 100%;
+}
+
+@media (max-width: 550px) {
+    .container {
+        height: 100vh;
+        width: 100%;
+        display: grid;
+
+        grid-template-columns: 1fr;
+        grid-template-rows: 5% 5% 30% 15% 15% 15% 10%;
+        grid-template-areas:
+        "navbar"
+        "sidebar"
+        "main"
+        "content1"
+        "content2"
+        "content3"
+        "footer"
+    ;
+    }
+}
