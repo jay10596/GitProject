@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Shopify Tabs</title>
+    </head>
+
+    <body>
+        <ul class="tabs">
+            <li class="tab active" data-content-id="tab-content-1">About</li>
+            <li class="tab" data-content-id="tab-content-2">Delivery</li>
+            <li class="tab" data-content-id="tab-content-3">FAQ</li>
+        </ul>
+
+        <div id="tab-content-1" class="tab-content active">orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+        <div id="tab-content-2" class="tab-content">content-2</div>
+        <div id="tab-content-3" class="tab-content">content-3</div>
+    </body>
+</html>
+
+<script>
+    tabs = document.querySelectorAll('.tab');
+    tabContents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            console.log(this)
+            console.log(this.dataset)
+
+            let content = document.getElementById(this.dataset.contentId)
+            console.log(content)
+
+
+            tabContents.forEach(function(content) {
+                content.classList.remove('active')
+            })
+            content.classList.add('active')
+
+            tabs.forEach(function(tab) {
+                tab.classList.remove('active')
+            })
+            this.classList.add('active')
+        })
+    })
+</script>
+
+<style>
+    .tabs {
+        list-style-type: none; /* Removes bullet points */
+
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+    }
+
+    .tab {
+        width: fit-content;
+        padding: 10px 20px;
+        margin: 10px 20px;
+    }
+
+    .tab.active {
+        color: grey;
+        border-bottom-style: solid;
+        border-bottom-color: red;
+        border-bottom-width: 2px;
+    }
+
+    .tab-content {
+        display: none;
+    }
+
+    .tab-content.active {
+        display: block;
+        margin: 10px 30px;
+        text-align: justify;
+    }
+</style>
