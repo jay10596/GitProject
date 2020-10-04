@@ -17,6 +17,7 @@
       <list>
         <option value="CSS File" />
         <option value="HTML File" />
+        <option value="Liquid File" />
       </list>
     </option>
   </component>
@@ -39,6 +40,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -58,7 +60,8 @@
       <workItem from="1600849411149" duration="1003000" />
       <workItem from="1600864803442" duration="10764000" />
       <workItem from="1601191052986" duration="6662000" />
-      <workItem from="1601294976464" duration="4537000" />
+      <workItem from="1601294976464" duration="4922000" />
+      <workItem from="1601802690636" duration="35000" />
     </task>
     <servers />
   </component>

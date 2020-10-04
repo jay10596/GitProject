@@ -1,0 +1,252 @@
+{% comment %}
+    To run the theme: theme watch --allow-live
+{% endcomment %}
+
+<br>Method 1:<br>
+{% assign pinkFilter = collection.url |  append: '/pink' %}
+{% assign descending = collection.url |  append: '/?sort_by=title-descending' %}
+{% assign ascending = collection.url |  append: '/?sort_by=title-ascending' %}
+
+<a href="{{ pinkFilter }}">click here for pink chair</a><br>
+<a href="{{ descending }}">click here for descending order</a><br>
+<a href="{{ ascending }}">click here for ascending order</a><br>
+
+
+
+<br>Method 2:<br>
+Add:
+{% for tag in collection.tags %}
+    {{ tag | link_to_add_tag: tag }}
+{% endfor %}<br>
+Remove:
+{% for tag in collection.tags %}
+    {{ tag | link_to_remove_tag: tag }}
+{% endfor %}
+
+<ul>
+    <li><a href="{{ collection.url | sort_by: 'best-selling' }}">Best Selling</a></li>
+    <li><a href="{{ collection.url | sort_by: 'title-ascending' }}">A to Z</a></li>
+    <li><a href="{{ collection.url | sort_by: 'title-descending' }}">Z to A</a></li>
+    <li><a href="{{ collection.url | sort_by: 'price-ascending' }}">Low to High</a></li>
+    <li><a href="{{ collection.url | sort_by: 'price-descending' }}">High to Low</a></li>
+</ul>
+
+
+
+<br>Method 3:<br>
+{% assign collection_title = collection.title | downcase | append: '/' %}
+
+{% if request.path contains collection_title %}
+    {% for tag in collection.tags %}
+        {% if request.path contains tag %}
+
+            {% assign remove_tag = '+' | append: tag %}
+
+            {% assign path = request.path | remove: remove_tag | remove: tag %}
+
+            <a href="{{ path }}">{{ tag }}</a>
+        {% else %}
+            {% assign path = request.path | append: '+' | append: tag %}
+
+            <a href="{{ path }}">{{ tag }}</a>
+        {% endif %}
+    {% endfor %}
+{% else %}
+    {% for tag in collection.tags %}
+        {% assign path = request.path | append: '/' | append: tag %}
+
+        <a href="{{ path }}">{{ tag }}</a>
+    {% endfor %}
+{% endif %}
+<br>
+
+
+
+<br>Method 4:<br>
+<ul>
+    {% for tag in collection.tags %}
+        {% if request.path contains tag %}
+            <li>
+                {{ tag | link_to_remove_tag: tag }}
+            </li>
+        {% else %}
+            <li>
+                {{ tag | link_to_add_tag: tag }}
+            </li>
+        {% endif %}
+    {% endfor %}
+</ul>
+
+
+
+<br>Method 5:<br>
+<div class="accordion">
+    <button class="accordion-button">Filter</button>
+
+    <ul class="accordion-content">
+        {% for tag in collection.tags %}
+            {% if request.path contains tag %}
+                <li>
+                    {{ tag | link_to_remove_tag: tag }}
+                </li>
+            {% else %}
+                <li>
+                    {{ tag | link_to_add_tag: tag }}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+
+<style>
+    .accordion {
+        width: 300px;
+    }
+
+    .accordion-button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 100%;
+        background-color: #333333;
+        color: white;
+        border: none;
+        outline: none;
+    }
+
+    .accordion-button::after {
+        content: '\25bc'; /* CSS entity reference */
+    }
+
+    .accordion-button-active {
+        background-color: #555555
+    }
+
+    .accordion-button-active::after {
+        content: '\25b2';
+    }
+
+    .accordion-content {
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s;
+
+        padding: 0px 10px;
+        font-family: SansSerif;
+        background-color: lightgray;
+    }
+</style>
+
+<script>
+    accordion_button = document.querySelectorAll('.accordion-button')
+
+    accordion_button.forEach(function(button) {
+        button.addEventListener('click', () => { // or button => {
+            button.classList.toggle('accordion-button-active')
+
+            let accordion_content = document.querySelector('.accordion-content')
+            // let accordion_content = button.nextElementSibling   // It will take the next element after the button(.accordion-button).
+
+            if(button.classList.contains('accordion-button-active')) {
+                accordion_content.style.maxHeight = accordion_content.scrollHeight + 'px'
+
+            } else {
+                accordion_content.style.maxHeight = 0
+            }
+        })
+    })
+</script>
+
+
+
+{% comment %}This one is without animation. Much easier{% endcomment %}
+<br>Method 6:<br>
+<div class="accordion2">
+    <button class="accordion2-button">Filter</button>
+
+    <ul class="accordion2-content">
+        {% for tag in collection.tags %}
+            {% if request.path contains tag %}
+                <li>
+                    {{ tag | link_to_remove_tag: tag }}
+                </li>
+            {% else %}
+                <li>
+                    {{ tag | link_to_add_tag: tag }}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+
+<style>
+    .accordion2 {
+        width: 300px;
+    }
+
+    .accordion2-button {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 100%;
+        background-color: #333333;
+        color: white;
+        border: none;
+        outline: none;
+    }
+
+    .accordion2-button::after {
+        content: '\25bc'; /* CSS entity reference */
+    }
+
+    .accordion2-button-active + .accordion2-content { /* + means if statement in css. if accordion2-button-active, then display should be block. */
+        display: block;
+    }
+
+    .accordion2-button-active {
+        background-color: #555555
+    }
+
+    .accordion2-button-active::after {
+        content: '\25b2';
+    }
+
+    .accordion2-content {
+        /*
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s;
+        */
+        display: none;
+
+        padding: 0px 10px;
+        font-family: SansSerif;
+        background-color: lightgray;
+    }
+</style>
+
+<script>
+    accordion2_button = document.querySelectorAll('.accordion2-button')
+
+    accordion2_button.forEach(function(button) {
+        button.addEventListener('click', () => {
+            button.classList.toggle('accordion2-button-active')
+
+            /*
+            let accordion_content = document.querySelector('.accordion-content')
+            // let accordion_content = button.nextElementSibling   // It will take the next element after the button(.accordion-button).
+
+            if(button.classList.contains('accordion-button-active')) {
+                accordion_content.style.maxHeight = accordion_content.scrollHeight + 'px'
+
+            } else {
+                accordion_content.style.maxHeight = 0
+            }
+            */
+        })
+    })
+</script>
