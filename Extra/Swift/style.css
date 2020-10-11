@@ -1,0 +1,427 @@
+h1 {
+    font-family: Montserrat;
+    font-size: 68px;
+    font-weight: 600;
+    line-height: 0%;
+}
+
+h2 {
+    font-family: Montserrat;
+    font-size: 48px;
+    font-weight: 600;
+    color: white;
+}
+
+h3 {
+    font-family: Montserrat;
+    font-size: 38px;
+    font-weight: 200;
+}
+
+p {
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 100;
+}
+
+.portal-buttons {
+    margin: 40px 0px;
+}
+.btn-1{
+    padding: 10px 20px;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 400;
+    color: white;
+    background-color: #7FC241;
+    transform: skew(-20deg);
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border: none;
+}
+
+.btn-2{
+    margin: 0px 20px;
+    padding: 10px 20px;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 400;
+    color: black;
+    background-color: white;
+    transform: skew(-20deg);
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border: 1px solid lightgray;
+}
+
+h5 {
+    transform: skew(20deg);
+    margin: 0px;
+}
+
+.council-portal {
+    background-color: white;
+}
+
+.employer-portal {
+    background-color: #F2F4F4;
+}
+
+.portal {
+    margin: 0 10%;
+}
+
+.portal-container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 40% 60%; /* Instead of: 1fr 1fr 1fr 1fr */
+    grid-template-areas:
+        "text design"
+    ;
+}
+
+@media (max-width: 1100px) {
+    .portal-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 25% 800px;
+        grid-template-areas:
+        "text"
+        "design"
+    ;
+    }
+}
+
+.portal-text {
+    grid-area: text;
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.portal-design {
+    grid-area: design;
+
+    position: relative;
+    height: 800px;
+    justify-content: center;
+    margin: 0px 4%;
+}
+
+.parallelogram11 {
+    width: 25%;
+    height: 100px;
+    background: #D0DA47;
+    transform: skew(-20deg);
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+
+    position: absolute;
+    left: -2%;
+    top: 40%;
+}
+
+.parallelogram12 {
+    width: 31.25%;
+    height: 150px;
+    background: #7FC241;
+    transform: skew(-20deg);
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+
+    position: absolute;
+    right: 0;
+    top: 39%;
+}
+
+.parallelogram13 {
+    width: 83.75%;
+    height: 370px;
+    transform: skew(-20deg);
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+
+    position: absolute;
+    left: 10%;
+    top: 4%;
+
+    overflow: hidden;
+}
+
+.parallelogram14 {
+    width: 18.75%;
+    height: 100px;
+    transform: skew(-20deg);
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+
+    position: absolute;
+    right: 0;
+    top: 53%;
+
+    overflow: hidden;
+}
+
+.parallelogram15 {
+    width: 25%;
+    height: 125px;
+    transform: skew(-20deg);
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+
+    position: absolute;
+    right: 10%;
+    bottom: 10%;
+
+    overflow: hidden;
+}
+
+.parallelogram16 {
+    width: 15.50%;
+    height: 75px;
+    background: #056839;
+    transform: skew(-20deg);
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+
+    position: absolute;
+    left: 11%;
+    bottom: 15%;
+}
+
+.parallelogram17 {
+    width: 31.75%;
+    height: 150px;
+    background: green;
+    transform: skew(-20deg);
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+
+    position: absolute;
+    left: 31%;
+    bottom: 24%;
+
+    overflow: hidden;
+}
+
+.img-big {
+    transform: skew(20deg);
+    object-fit: cover;
+    max-width: 200%;
+    max-height: 200%;
+}
+
+.img-small {
+    transform: skew(20deg);
+    object-fit: cover;
+    max-width: 190%;
+    max-height: 190%;
+}
+
+.shadow {
+    -webkit-box-shadow: 2px 2px 4px 5px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow:    2px 2px 4px 5px #ccc;  /* Firefox 3.5 - 3.6 */
+    box-shadow:         2px 2px 4px 5px #ccc;
+}
+
+.partners-portal {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(700px, 1fr));
+    align-items: center;
+}
+
+.partners-portal-text {
+    background: #056839;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 800px;
+}
+
+.partners-portal-title {
+    margin: 0px 20%;
+}
+
+.partners-portal-design {
+    position: relative;
+    width: 100%;
+    height: 800px;
+    background: gray;
+    overflow: hidden;
+}
+
+.parallelogram1 {
+    width: 60px;
+    height: 35px;
+    background: #7FC241;
+    transform: skew(-20deg);
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+
+    position: absolute;
+    left: 5%;
+    bottom: 45%;
+}
+
+.parallelogram2 {
+    width: 125px;
+    height: 75px;
+    background: #000000;
+    opacity: 0.2;
+    transform: skew(-20deg);
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+
+    position: absolute;
+    left: 12%;
+    bottom: 35%;
+}
+
+.parallelogram3 {
+    width: 40px;
+    height: 30px;
+    background: #7FC241;
+    transform: skew(-20deg);
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
+
+    position: absolute;
+    left: 32%;
+    bottom: 30%;
+}
+
+.img-box {
+    width:100%;
+    height:800px;
+    overflow: hidden;
+}
+.img-container {
+    width: 100%;
+    height: 800px;
+    background-color: #056839;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+
+}
+
+.box-1 {
+    width: 100%;
+    height: 800px;
+}
+
+.box-2 {
+    width: 30%;
+    height: 800px;
+    transform: skew(-10deg);
+    position: absolute;
+    right: -10%;
+
+    background-image: url("https://cdn.i-scmp.com/sites/default/files/d8/images/methode/2020/05/27/354e8252-a002-11ea-8055-0ae12e466049_image_hires_182706.jpg");
+    background-color: #cccccc;
+}
+
+
+@media only screen and (max-width: 1240px) {
+    /*.des-container {*/
+    /*    margin-left: 200px;*/
+    /*}*/
+}
+
+
+.portal-buttons {
+    display: flex;
+}
+
+
+.bec-container {
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+}
+
+.parallelogram21 {
+    width: 12.50%;
+    height: 50px;
+    background: #38BB8D;
+    transform: skew(-20deg);
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+
+    position: absolute;
+    right: 5%;
+    top: 5%;
+}
+
+.parallelogram22 {
+    width: 9.5%;
+    height: 40px;
+    background: #38BB8D;
+    transform: skew(-20deg);
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+
+    position: absolute;
+    right: 10%;
+    top: 25%;
+}
+
+.parallelogram23 {
+    width: 31.25%;
+    height: 125px;
+    background: #38BB8D;
+    transform: skew(-20deg);
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+
+    position: absolute;
+    right: 23%;
+    top: 30%;
+}
+
+.parallelogram24 {
+    width: 87%;
+    height: 350px;
+    background: green;
+    transform: skew(-20deg);
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+
+    position: absolute;
+    left: -14.2%;
+    top: 11.4%;
+}
+
+.faq {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #333333;
+}
+
+.help-section {
+    text-align: center;
+    margin: 0px 130px;
+}
+
+.help-box {
+    margin: 20px 0px;
+    margin: 20px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.help-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: yellow;
+    padding: 20px;
+    max-width: 300px;
+}

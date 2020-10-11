@@ -61,7 +61,8 @@
       <workItem from="1600864803442" duration="10764000" />
       <workItem from="1601191052986" duration="6662000" />
       <workItem from="1601294976464" duration="4922000" />
-      <workItem from="1601802690636" duration="35000" />
+      <workItem from="1601802690636" duration="358000" />
+      <workItem from="1602377155539" duration="19759000" />
     </task>
     <servers />
   </component>
@@ -69,6 +70,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="369" y="89" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601802761312">
+      <screen x="0" y="23" width="1440" height="809" />
+    </state>
+    <state x="369" y="89" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.809@0.23.1440.809" timestamp="1601802761312" />
     <state x="895" y="358" key="NewPhpFileDialog" timestamp="1600473795698">
       <screen x="0" y="23" width="1440" height="811" />
     </state>
