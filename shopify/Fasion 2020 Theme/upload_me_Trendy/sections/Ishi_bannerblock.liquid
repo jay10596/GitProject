@@ -1,0 +1,152 @@
+<div id="ishibannerblock" class="clearfix">
+    <div class="ishibannerblock-container">
+      <div class="row">
+        <div id="ishibanner1" class="ishibanner-container1 bannerblock col-sm-6">
+          <div class="image-container">
+            {% if section.settings.bannerimage1 != blank %}
+            <a class="ishi-customhover-{{ section.settings.bannerhover1 }} {% if section.settings.banner1_scale_enable %}scale{% endif %}" href="{% if section.settings.banner_link1 != blank %}{{ section.settings.banner_link1 }}{% else %}/{% endif %}">
+            <img 
+               src="{{ section.settings.bannerimage1 | img_url: '533x300' }}"
+               data-src="{{ img_url }}"
+               data-widths="[533]"
+               data-sizes="auto"
+               alt="{{ section.settings.bannerimage1.alt | escape }}">
+            </a>
+             {% else %}
+            <a href="/">
+              <img 
+               src="https://via.placeholder.com/533x300/f2f2f2.png?text=Size : 533px X 300px"
+               data-src="https://via.placeholder.com/533x300/f2f2f2.png?text=Size : 533px X 300px"
+               data-widths="[533]"
+               data-sizes="auto"
+               alt="placeholder">
+            </a>
+              {% endif %}
+          </div>
+        </div>
+        <div id="ishibanner2" class="ishibanner-container2 bannerblock col-sm-6">
+          <div class="image-container">
+            {% if section.settings.bannerimage2 != blank %}
+            <a class="ishi-customhover-{{ section.settings.bannerhover2 }} {% if section.settings.banner2_scale_enable %}scale{% endif %}" href="{% if section.settings.banner_link2 != blank %}{{ section.settings.banner_link2 }}{% else %}/{% endif %}">
+            <img 
+               src="{{ section.settings.bannerimage2 | img_url: '533x300' }}"
+               data-src="{{ img_url }}"
+               data-widths="[533]"
+
+               data-sizes="auto"
+               alt="{{ section.settings.bannerimage2.alt | escape }}">
+            </a>
+            {% else %}
+            <a href="/">
+              <img 
+               src="https://via.placeholder.com/533x300/f2f2f2.png?text=Size : 533px X 300px"
+               data-src="https://via.placeholder.com/533x300/f2f2f2.png?text=Size : 533px X 300px"
+               data-widths="[533]"
+               data-sizes="auto"
+               alt="placeholder">
+            </a>
+              {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Ishi Banner Block",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Bannerblock-1"
+      },
+      {
+        "type": "image_picker",
+        "id": "bannerimage1",
+        "label": "Image",
+        "info":"Size : 533px X 300px"
+      },
+      {
+        "type": "checkbox",
+        "id": "banner1_scale_enable",
+        "label": "Scale Banner",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "bannerhover1",
+        "label": "Hover",
+        "options": [
+          { "value": "fadeinnormal", "label": "FadeIn Normal"},
+          { "value": "fadeinflip", "label": "FadeIn Flip"},
+          { "value": "fadeinrotate", "label": "FadeIn Rotate"},
+          { "value": "fadeinrotate3D", "label": "FadeIn Rotate3D"},
+          { "value": "fadeintop", "label": "FadeIn Top"},
+          { "value": "fadeinbottom", "label": "FadeIn Bottom"},
+          { "value": "fadeintopbottom", "label": "FadeIn Top Bottom"},
+          { "value": "fadeoutcenter", "label": "FadeOut Center"},
+          { "value": "fadeinoutbordercorner", "label": "FadeInOut BorderCorner"},
+          { "value": "doublefadeincenter", "label": "Double FadeInOut Center"},
+          { "value": "fadeinoutsingle", "label": "FadeInOut Single Scroll"},
+          { "value": "fadeinoutdoublevertical", "label": "FadeInOut Double Scroll"},
+          { "value": "perspective", "label": "Perspective"},
+          { "value": "fadeinoutrotatevertical", "label": "FadeInOut Rotate Vertical"}
+        ]
+      },
+      {
+        "type": "url",
+        "id": "banner_link1",
+        "label": "Link"
+      },
+      {
+        "type": "header",
+        "content": "bannerblock-2"
+      },
+      {
+        "type": "image_picker",
+        "id": "bannerimage2",
+        "label": "Image",
+        "info":"Size : 533px X 300px"
+      },
+      {
+        "type": "checkbox",
+        "id": "banner2_scale_enable",
+        "label": "Scale Banner",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "bannerhover2",
+        "label": "Hover",
+        "options": [
+          { "value": "fadeinnormal", "label": "FadeIn Normal"},
+          { "value": "fadeinflip", "label": "FadeIn Flip"},
+          { "value": "fadeinrotate", "label": "FadeIn Rotate"},
+          { "value": "fadeinrotate3D", "label": "FadeIn Rotate3D"},
+          { "value": "fadeintop", "label": "FadeIn Top"},
+          { "value": "fadeinbottom", "label": "FadeIn Bottom"},
+          { "value": "fadeintopbottom", "label": "FadeIn Top Bottom"},
+          { "value": "fadeoutcenter", "label": "FadeOut Center"},
+          { "value": "fadeinoutbordercorner", "label": "FadeInOut BorderCorner"},
+          { "value": "doublefadeincenter", "label": "Double FadeInOut Center"},
+          { "value": "fadeinoutsingle", "label": "FadeInOut Single Scroll"},
+          { "value": "fadeinoutdoublevertical", "label": "FadeInOut Double Scroll"},
+          { "value": "perspective", "label": "Perspective"},
+          { "value": "fadeinoutrotatevertical", "label": "FadeInOut Rotate Vertical"}
+        ]
+      },
+       {
+        "type": "url",
+        "id": "banner_link2",
+        "label": "Link"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Ishi Banner Block",
+        "category": "ishi themes"
+      }
+    ]
+  }
+{% endschema %}

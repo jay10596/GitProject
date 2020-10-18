@@ -1,0 +1,447 @@
+<div class="product-template__container" itemscope itemtype="http://schema.org/Product" id="ProductSection-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="product" data-enable-history-state="true">
+  <meta itemprop="name" content="{{ product.title }}">
+  <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
+  <meta itemprop="image" content="{{ product.featured_image.src | img_url: '800x' }}">
+
+  {% comment %}
+    Get first variant, or deep linked one
+  {% endcomment %}
+  {%- assign current_variant = product.selected_or_first_available_variant -%}
+  {%- assign product_image_zoom_size = '1024x1024' -%}
+  {%- assign product_image_scale = '2' -%}
+  {%- assign enable_zoom = section.settings.enable_zoom -%}
+
+  {% case section.settings.image_size %}
+    {% when 'small' %}
+      {%- assign product_image_width = 'medium-up--one-third' -%}
+      {%- assign product_description_width = 'medium-up--two-thirds' -%}
+      {%- assign product_thumbnail_width = 'medium-up--one-third' -%}
+      {%- assign height = 345 -%}
+    {% when 'medium' %}
+      {%- assign product_image_width = 'medium-up--one-half' -%}
+      {%- assign product_description_width = 'medium-up--one-half' -%}
+      {%- assign product_thumbnail_width = 'medium-up--one-quarter' -%}
+      {%- assign height = 530 -%}
+    {% when 'large' %}
+      {%- assign product_image_width = 'medium-up--two-thirds' -%}
+      {%- assign product_description_width = 'medium-up--one-third' -%}
+      {%- assign product_thumbnail_width = 'medium-up--one-fifth' -%}
+      {%- assign height = 720 -%}
+    {% when 'full' %}
+      {%- assign product_image_width = '' -%}
+      {%- assign product_description_width = '' -%}
+      {%- assign product_thumbnail_width = 'medium-up--one-eighth' -%}
+      {%- assign height = 1090 -%}
+      {%- assign enable_zoom = false -%}
+  {% endcase %}
+
+  <div class="row product-single">
+
+    <div class="col-lg-6 col-sm-6 product-single__photos product-single-left">
+      <h3 itemprop="name" class="product-single__title text-center hidden-sm-up">{{ product.title }}</h3>
+
+      <div class="single-left">
+      {%- assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image -%}
+      {% for image in product.images %}
+        {% capture img_id %}FeaturedImage-{{ section.id }}-{{ image.id }}{% endcapture %}
+        {% capture img_class %}product-featured-img{% endcapture %}
+        {% capture zoom_img_id %}FeaturedImageZoom-{{ section.id }}-{{ image.id }}{% endcapture %}
+        {% capture img_wrapper_id %}{{ zoom_img_id }}-wrapper{% endcapture %}
+        {%- assign img_url = image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+        <div class="product-single__photo-wrapper js">
+          <div id="{{ zoom_img_id }}" class="product-single__photo{% if enable_zoom %} js-zoom-enabled{% endif %}{% if product.images.size > 1 %} product-single__photo--has-thumbnails{% endif %}{% unless featured_image == image %} hide{% endunless %}" data-image-id="{{ image.id }}"{% if enable_zoom %} data-zoom="{{ image | img_url: product_image_zoom_size, scale: product_image_scale }}"{% endif %}>
+            <img class="feature-row__image {{ img_class }} lazyload{% unless featured_image == image %} lazypreload{% endunless %}"
+                 src="{{ image | img_url: '771x1000' }}"
+                 data-widths="[1000]"
+                 alt="{{ image.alt | escape }}">
+          </div>
+        </div>
+      {% endfor %}
+
+      <noscript>
+        
+        <img src="{{ featured_image }}" alt="{{ featured_image.alt }}" id="FeaturedImage-{{ section.id }}" class="product-featured-img">
+      </noscript>
+       {% if product.images.size > 1 %}
+        {% if product.images.size > 3 %}
+          {%- assign enable_thumbnail_slides = true -%}
+        {% endif %}
+
+        <div class="thumbnails-wrapper{% if enable_thumbnail_slides == true %} thumbnails-slider--active{% endif %}">
+          <div class="js-qv-mask mask">
+          <ul id="product-thumbnails-carousel" class="owl-carousel owl-theme grid grid--uniform product-single__thumbnails product-single__thumbnails-{{ section.id }}">
+            {% for image in product.images %}
+              <li class="product-single__thumbnails-item js">
+                <a href="{{ image.src | img_url: product_image_zoom_size, scale: product_image_scale }}"
+                   class="text-link product-single__thumbnail product-single__thumbnail--{{ section.id }}"
+                   data-thumbnail-id="{{ image.id }}"
+                   {% if enable_zoom %}data-zoom="{{ image.src | img_url: product_image_zoom_size, scale: product_image_scale }}"{% endif %}>
+                     <img class="product-single__thumbnail-image" src="{{ image.src | img_url: '250x250'}}" alt="{{ image.alt | escape }}">
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+          </div>
+        </div>
+      {% endif %}
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-sm-6 product-single-right">
+      <div class="product-single__meta">
+
+        <h1 itemprop="name" class="product-single__title hidden-sm-down">{{ product.title }}</h1>
+
+          <div class="review">
+            <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
+            {% if product.metafields.spr.reviews == blank %}
+              <span class="no-review hidden-xs-down"> {{ 'products.product.no_review' | t }} </span>
+            {% endif %}
+            <a href="javascript:void(0);" class="write_comment">{{ 'products.product.write_review' | t }}<i class="material-icons comments" aria-hidden="true"></i></a>
+            <!-- <div style="margin-top: 12px;color: #000000;font-weight: 500;">{{ 'products.product.share_review' | t }}</div> -->
+          </div>
+
+          <div class="price-product">
+            <div class="product-single__price product-single__price-{{ section.id }}{% unless current_variant.available %} product-price--sold-out{% endunless %}">
+              {% if current_variant.compare_at_price > current_variant.price %}
+                  <span class="product-price__price product-price__sale">
+                    <s class="product-price__price is-bold" id="ProductPrice-{{ section.id }}">{{ current_variant.price | money }}</s> 
+                  </span>
+                  <span class="product-price__price product-price__price-{{ section.id }} product-price__sale product-price__sale--single">
+                    <s id="ComparePrice-{{ section.id }}"
+                      itemprop="price" class="regular-price">
+                      {{ current_variant.compare_at_price | money }}
+                    </s>
+                  </span>
+              {% else %}
+                <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>                
+                <span class="product-price__price product-price__price-{{ section.id }}">
+                  <span id="ProductPrice-{{ section.id }}"
+                    itemprop="price" style="text-decoration: none;">
+                    {{ current_variant.price | money }}
+                  </span>
+                  <s id="ComparePrice-{{ section.id }}" itemprop="price" class="regular-price hide">{{ current_variant.compare_at_price | money }}</s>
+                </span>
+              {% endif %}
+            </div>
+          </div>
+
+          {% if section.settings.show_vendor %}
+            <p itemprop="brand" class="product-single__vendor">{{ 'products.product.vendor' | t }} : <span>{{ product.vendor }}</span></p>
+          {% endif %}
+          {% if section.settings.show_Producttype %}
+            <p itemprop="brand" class="product-single__vendor">{{ 'products.product.Producttype' | t }} : <span>{{product.type}}</span></p>
+          {% endif %}
+          
+          <div class="wishlist-chart">
+            {% include 'wishlist-product' %}
+
+            {% if section.settings.show_sizechart %}
+            <button id="myBtn" class="btn btn-primary btn-lg size-chart" data-toggle="modal" data-target="#myModal"><svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="ruler-horizontal" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="svg-inline--fa fa-ruler-horizontal fa-w-20 fa-2x"><path fill="currentColor" d="M608 128H32c-17.67 0-32 14.33-32 32v192c0 17.67 14.33 32 32 32h576c17.67 0 32-14.33 32-32V160c0-17.67-14.33-32-32-32zm-16 208H48V176h64v56c0 4.42 3.58 8 8 8h16c4.42 0 8-3.58 8-8v-56h64v56c0 4.42 3.58 8 8 8h16c4.42 0 8-3.58 8-8v-56h64v56c0 4.42 3.58 8 8 8h16c4.42 0 8-3.58 8-8v-56h64v56c0 4.42 3.58 8 8 8h16c4.42 0 8-3.58 8-8v-56h64v56c0 4.42 3.58 8 8 8h16c4.42 0 8-3.58 8-8v-56h64v160z" class=""></path></svg>Size Chart</button>
+            {% endif %}
+          </div>
+
+          {% unless product.available %}
+            <div id="sold-out">
+              {% form 'contact' %}
+                {% if form.posted_successfully? %}
+                <p class="accent-text alert alert-success">{{ 'products.product.success-message' | t }}</p>
+                {% else %}
+                <p class="notify-msg first">Sorry! Our {{ product.title }} is currently <span class="sold-msg">sold out.</span></p>
+                {% endif %}
+                {% if form.errors %}
+                <div class="error feedback accent-text">
+                  <p>{{ 'products.product.error-message' | t }}</p>
+                </div>
+                {% endif %}
+                {% unless form.posted_successfully? %}
+                <div class="notify-price">
+                  <div id="notify-me-wrapper" class="clearfix">
+                    {% if customer %}
+                    <input type="hidden" name="contact[email]" value="{{ customer.email }}" />
+                    {% else %}
+                    <input required="required" type="email" name="contact[email]" placeholder="your@email.com" class="styled-input{% if form.errors contains 'email' %} error{% endif %}" value="{{ contact.fields.email }}" />
+                    {% endif %}
+                   <input type="hidden" name="contact[body]" value="{{ 'products.product.notify-message' | t: title: product.title }}" />
+                    <input class="btn styled-submit" type="submit" value="{{ 'products.product.send' | t }}" /> 
+                  </div>
+                </div>
+                <p class="notify-msg">
+                  {{ 'products.product.notify-message2' | t }}
+                </p>
+                {% endunless %}
+              {% endform %}
+            </div>
+          {% endunless %}
+           {% assign current_variant = product.selected_or_first_available_variant %}
+        <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product-selection-bottom">
+          <meta itemprop="priceCurrency" content="{{ shop.currency }}">
+           <meta itemprop="price" content="{{ product.price | divided_by: 100.00 }}">
+          <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+          <div class="product-selection {% unless section.settings.show_variant_labels %}product-form--hide-variant-labels{% endunless %}">
+            {% form 'product', product, class:'product-form cart-product-page product-form-product-template', novalidate: 'novalidate', data-product-form: '', data-section: section.id %}
+              {% unless product.options.size == 1 and product.variants[0].title == 'Default Title' %}
+                {% for option in product.options_with_values %}
+                  <div class="selector-wrapper js product-form__item">
+                    <label {% if option.name == 'default' %}class="label--hidden" {% endif %}>
+                      {{ option.name }}
+                    </label>
+                    <select class="single-option-selector single-option-selector-{{ section.id }} product-form__input" id="SingleOptionSelector-{{ forloop.index0 }}" data-index="option{{ forloop.index }}">
+                      {% for value in option.values %}
+                        <option class="veriant-option" value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value }}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                {% endfor %}
+            	<div class="ishi-product-swatch">
+                  {% for option in product.options_with_values %}
+                    <div class="ishi-custom-swatch">
+                      <label {% if option.name == 'default' %}class="label--hidden" {% endif %}>
+                        {{ option.name }}
+                      </label>
+                      <div class="option-swatch" data-selector="SingleOptionSelector-{{ forloop.index0 }}">
+                        {% for value in option.values %}
+                          {% if option.name == 'color' or option.name == 'Color'%}
+                              <span class="custom-swatch color-swatch{% if option.selected_value == value %} active{% endif %}" style="background-color: {{ value }};" data-index="{{ forloop.index | minus:1}}"></span>
+                          {% else %}
+                              <span class="custom-swatch{% if option.selected_value == value %} active{% endif %}" data-index="{{ forloop.index | minus:1}}"> {{ value }}</span>
+                          {% endif%}
+                          {% endfor %}
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endunless %}
+              <div class="quantity-cart">
+              {% if section.settings.show_quantity_selector %}
+                  <div class="product-form__item product-form__item--quantity selector-wrapper">
+                      <label>{{ 'products.product.quantity' | t }}</label>
+                      <div class="dec button qtyminus">-</div>
+                      <input name="quantity" value="1" class="quantity">
+                      <div class="inc button qtyplus">+</div> 
+                  </div>
+              {% endif %}
+                <select name="id" id="ProductSelect-{{ section.id }}" data-section="{{ section.id }}" class="product-form__variants no-js">
+                  {% for variant in product.variants %}
+                    {% if variant.available %}
+                      <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">
+                        {{ variant.title }}
+                      </option>
+                    {% else %}
+                      <option disabled="disabled">{{ variant.title }} - {{ 'products.product.sold_out' | t }}</option>
+                    {% endif %}
+                  {% endfor %}
+                </select>
+                <div class="product-info {% unless product.available %}product-soldout {% endunless %}{% if current_variant.compare_at_price > current_variant.price %}product-sale{% endif %}">
+                  <div class="item_info">
+                    <div class="product-form__item product-form__item--submit">
+                      <button type="button" id="AddToCart-{{ section.id }}" class="product-addToCart addToCart enable btn" {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+                        <span id="AddToCartText-{{ section.id }}">
+                          {% unless current_variant.available %}
+                            {{ 'products.product.sold_out' | t }}
+                          {% else %}
+                            {{ 'products.product.add_to_cart' | t }}
+                          {% endunless %}
+                        </span>
+                      </button>
+                    </div>
+                    <div id="inventory" class="available-stock">
+                      <span class="instock"> <i class="material-icons product-available">&#xE5CA;</i>  {{ 'products.product.instock' | t }} </span>
+                      <span class="outstock"> <i class="material-icons product-unavailable">&#xE14B;</i> {{ 'products.product.sold_out' | t }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <input type="hidden" name="return_to" value="back" />
+              {% if section.settings.show_spb %}
+                <div class="dynamic-checkout">
+                  {{ form | payment_button }}
+                </div>
+              {% endif %}
+            {% endform %}
+<!--             </form> -->
+          </div>
+        </div>
+
+        {% if section.settings.show_share_buttons %}
+          <div class="share_this_btn">
+            {% include 'addthis' %}
+          </div>
+        {% endif %}
+
+        {% if section.settings.trust-image != blank and section.settings.show_trust_image %}
+        <div class="trusted-img">
+          <img 
+               src="{{ section.settings.trust-image | img_url: '387x42' }}"
+               data-src="{{ img_url }}"
+               data-widths="[387]"
+               data-sizes="auto"
+               alt="{{ section.settings.trust-image.alt | escape }}">
+          </div>
+        {% endif %} 
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="page-width product-tab">
+  <ul class="tabs nav-tabs tab-id" role="tablist">
+    {% if section.settings.show_description %}
+      <li class="tab-item"><a class="nav-link" data-toggle="tab" role="tab" href="#desc"><span>{{ 'products.product.description' | t }}</span></a></li>
+    {% endif %}
+    {% if section.settings.show_review %}
+      <li class="tab-item"><a class="nav-link" data-toggle="tab" role="tab" href="#product-review"><span>{{ 'products.product.review' | t }}</span></a></li>
+    {% endif %}
+    {% if section.settings.show_shipping %}
+      <li class="tab-item"> <a class="nav-link" data-toggle="tab" role="tab" href="#shipping"><span>{{ 'products.product.return' | t }}</span></a> </li>
+    {% endif %}
+  </ul>
+  <div class="tab-content" id="tab-content">
+    {% if section.settings.show_description %}
+      <div id="desc" class="tab-pane fade in active" role="tabpanel">
+         {{ product.description }}
+      </div>
+    {% endif %}
+    {% if section.settings.show_review %}
+      <div id="product-review" class="tab-pane fade in" role="tabpanel">
+        <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+      </div>
+    {% endif %}
+    {% if section.settings.show_shipping %}
+      <div id="shipping" class="tab-pane fade in" role="tabpanel">
+        <div class="policy">
+            <div class="refund">
+              <p class="title">{{ 'products.product.refund-policy' | t }}</p>
+                <div class="inner-content">{{ shop.refund_policy }}</div>
+            </div>
+            <div class="privacy">
+              <p class="title">{{ 'products.product.privacy-policy' | t }}</p>
+                <div class="inner-content">{{ shop.privacy_policy }}</div>
+            </div>
+            <div class="termsofservice">
+              <p class="title">{{ 'products.product.termsofservice' | t }}</p>
+                <div class="inner-content">{{ shop.terms_of_service }}</div>
+            </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% if collection %}
+  <div class="text-center return-link-wrapper page-width">
+    <a href="{{ collection.url }}" class="btn btn--secondary btn--has-icon-before return-link">
+      {% include 'icon-arrow-left' %}
+      {{ 'products.product.back_to_collection' | t: title: collection.title }}
+    </a>
+  </div>
+{% endif %}
+
+{% unless product == empty %}
+  <script type="application/json" id="ProductJson-{{ section.id }}">
+    {{ product | json }}
+  </script>
+{% endunless %}
+
+<script>
+  jQuery(document).ready(function() {
+    $(".write_comment").click(function(e) { 
+        $('.product-tab .nav-tabs a[href="#product-review"]').trigger('click');
+        $('html, body').animate({scrollTop: $("#product-review").offset().top}, 2000);
+    });
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Product Pages",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_quantity_selector",
+        "label": "Show Quantity Selector",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_variant_labels",
+        "label": "Show Variant Labels",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_vendor",
+        "label": "Show Vendor",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_Producttype",
+        "label": "Show Product Type",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_zoom",
+        "label": "Enable Image Zoom",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_sizechart",
+        "label": "Show Size Chart",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_share_buttons",
+        "label": "Show Social Sharing Buttons",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_description",
+        "label": "Show Description Tab",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_review",
+        "label": "Show Review Tab",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_shipping",
+        "label": "Show Shipping Tab",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_trust_image",
+        "label": "Show Trust Image",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_spb",
+        "label": "Show Dynamic Checkout Button",
+        "info": "Each customer will see their preferred payment method from those available on your store, such as PayPal or Apple Pay. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Trusted Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "trust-image",
+        "label": "Image",
+        "info": "Size: 387px X 42px"
+      }
+    ]
+  }
+{% endschema %}
+ 

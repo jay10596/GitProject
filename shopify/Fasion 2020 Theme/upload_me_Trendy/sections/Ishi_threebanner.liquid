@@ -1,0 +1,91 @@
+<div id="ishithreebannerblock">
+  <div class="ishithreebannerblock-container">
+    <div class="row">
+       {% assign i = 1 %}
+        {% if section.blocks.size > 0 %}
+          {% for block in section.blocks %}
+          <div id="ishithreebanner_{{ i }}" class="ishithreebanner-container col-md-12 col-sm-4 col-xs-12">
+            <div class="image-container">
+              {% if block.settings.bannerimage != blank %}
+              <a class="ishi-customhover-{{ block.settings.bannerhover }} {% if block.settings.banner_scale_enable %}scale{% endif %}" href="{% if block.settings.banner_link != blank %}{{ block.settings.banner_link }}{% else %}/{% endif %}">
+              <img 
+                 src="{{ block.settings.bannerimage | img_url: '345x220' }}"
+                 data-src="{{ img_url }}"
+                 data-widths="[345]"
+
+                 data-sizes="auto"
+                 alt="{{ block.settings.bannerimage.alt | escape }}">
+              </a>
+              {% else %}
+              <a href="/">
+                <img 
+                 src="https://via.placeholder.com/345x220/ffffff.png?text=Size : 345px X 220px"
+                 data-src="https://via.placeholder.com/345x220/ffffff.png?text=Size : 345px X 220px"
+                 data-widths="[345]"
+                 data-sizes="auto"
+                 alt="placeholder">
+              </a>
+                {% endif %}
+            </div>
+            {% assign i = i | plus: 1 %}
+          </div>
+          {% endfor %}
+        {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Ishi Three Banner",
+    "settings": [
+    ],
+    "blocks": [
+      {
+        "type": "banner_image",
+        "name": "Banner",
+        "limit":3,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "bannerimage",
+            "label": "Image",
+            "info": "Size: 345px X 220px"
+          },
+          {
+            "type": "checkbox",
+            "id": "banner_scale_enable",
+            "label": "Scale Banner",
+            "default": false
+          },
+          {
+            "type": "select",
+            "id": "bannerhover",
+            "label": "Hover",
+            "options": [
+              { "value": "fadeinnormal", "label": "FadeIn Normal"},
+              { "value": "fadeinflip", "label": "FadeIn Flip"},
+              { "value": "fadeinrotate", "label": "FadeIn Rotate"},
+              { "value": "fadeinrotate3D", "label": "FadeIn Rotate3D"},
+              { "value": "fadeintop", "label": "FadeIn Top"},
+              { "value": "fadeinbottom", "label": "FadeIn Bottom"},
+              { "value": "fadeintopbottom", "label": "FadeIn Top Bottom"},
+              { "value": "fadeoutcenter", "label": "FadeOut Center"},
+              { "value": "fadeinoutbordercorner", "label": "FadeInOut BorderCorner"},
+              { "value": "doublefadeincenter", "label": "Double FadeInOut Center"},
+              { "value": "fadeinoutsingle", "label": "FadeInOut Single Scroll"},
+              { "value": "fadeinoutdoublevertical", "label": "FadeInOut Double Scroll"},
+              { "value": "perspective", "label": "Perspective"},
+              { "value": "fadeinoutrotatevertical", "label": "FadeInOut Rotate Vertical"}
+            ]
+          },
+          {
+            "type": "url",
+            "id": "banner_link",
+            "label": "Link"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,80 @@
+<div class="section-header text-center">
+  <h1 class="article__title">{{ article.title }}</h1>
+  {% if section.settings.blog_show_author %}
+    <span class="article__author"><i class="fa fa-user" aria-hidden="true"></i>
+	{{ 'blogs.article.by_author' | t: author: article.author }}</span>
+  {% endif %}
+
+  {% if section.settings.blog_show_date %}
+    <span class="article__date">
+      	<i class="fa fa-calendar" aria-hidden="true"></i>
+      {{ article.published_at | time_tag: format: 'month_day_year' }}
+    </span>
+  {% endif %}
+</div>
+
+
+
+{% if article.image %}
+  {% capture img_id %}ArticleImage-{{ article.image.id }}{% endcapture %}
+  {% capture img_wrapper_id %}ArticleImageWrapper-{{ article.image.id }}{% endcapture %}
+  {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+  {% include 'image-style' with image: article.image, small_style: true, width: 870, height: 522, wrapper_id: img_wrapper_id, img_id: img_id %}
+  <div id="{{ img_wrapper_id }}" class="article__grid-image-wrapper js">
+    <a href="{{ article.url }}" class="article__grid-image-container">
+      <img id="{{ img_id }}"
+           class="article__grid-image lazyload"
+           src="{{ article.image | img_url: '870x522' }}"
+           data-src="{{ img_url }}"
+           data-widths="[870]"
+           data-aspectratio="{{ article.image.aspect_ratio }}"
+           data-sizes="auto"
+           alt="{{ article.image.alt | escape }}">
+    </a>
+    
+  </div>
+  <noscript>
+    <a href="{{ article.url }}" class="article__grid-image-wrapper">
+      {{ article | img_url: '345x345', scale: 2 | img_tag: article.title, 'article__grid-image' }}
+    </a>
+  </noscript>
+{% endif %}
+
+
+
+<div class="rte" itemprop="articleBody">
+  {{ article.content }}
+</div>
+
+{% if section.settings.show_share_buttons %}
+  <div class="share_this_blog">
+    {% include 'addthis' %}
+  </div>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Posts",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "blog_show_author",
+        "label": "Show Author",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show Date",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_share_buttons",
+        "label": "Show Social Sharing Buttons",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

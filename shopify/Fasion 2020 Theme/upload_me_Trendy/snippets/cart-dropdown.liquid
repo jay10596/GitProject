@@ -1,0 +1,33 @@
+
+<div class="cart-container-inner" data-section-id="{{ section.id }}" data-section-type="cart-template">
+  <div class="product-list"></div>
+  <div class="cart__footer">
+    <div class="grid">
+      {% if section.settings.cart_notes_enable %}
+        <div class="grid__item medium-up--one-half cart-note">
+          <label for="CartSpecialInstructions" class="cart-note__label small--text-center">{{ 'cart.general.note' | t }}</label>
+          <textarea name="note" id="CartSpecialInstructions" class="cart-note__input">{{ cart.note }}</textarea>
+        </div>
+      {% endif %}
+      <div class="grid__item {% if section.settings.cart_notes_enable %} medium-up--one-half{% endif %}">
+        <div>
+          <span class="cart__subtotal-title">{{ 'cart.general.subtotal' | t }}</span>
+          <span class="cart__subtotal"></span>          
+        </div>
+        <div class="cart__shipping">{{ 'cart.general.shipping_at_checkout' | t }}</div>
+        <div class="cart-links">
+          <a class="btn checkout-btn" href="/checkout">{{ 'cart.general.checkout-dropdown' | t }}</a>
+          <a class="view-cart btn" href="/cart">{{ 'cart.general.title' | t }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cart__empty hide">
+    <span class="cart--empty-message">{{ 'cart.general.empty' | t }}</span>
+    <div class="cookie-message">
+      <p>{{ 'cart.general.cookies_required' | t }}</p>
+    </div>
+  </div>
+</div>
+
+

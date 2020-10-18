@@ -1,0 +1,418 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{
+	margin:0;
+	padding:0;
+	border:0;
+	outline:0;
+	vertical-align:baseline;
+}
+html { 
+	background-color:#fff;
+}
+body{
+	font-size: 16px;
+  	font-weight: 400;
+	min-height:100%;
+	height:auto;
+	color: #000;
+	font-family:'Roboto', sans-serif;
+}
+footer, header, section {
+	display:block;
+}
+.table {
+   width: 75% !important;
+}
+a:hover { text-decoration:underline }
+a{
+	text-decoration: none;
+	cursor:pointer;
+	color:#479ccf;
+}
+p{
+	margin: 0;
+	letter-spacing: 0.3px;
+    line-height: 20px;
+}
+ul{
+	list-style-type: disc;
+}
+ol{
+	padding: 0;
+	margin: 0;
+}
+strong{
+	font-weight:700;
+}
+dt {
+    display: inline-block;
+}
+
+dd {
+    display: inline-block;
+    margin: 0;
+}
+
+/*----------------------------------------------------------------------*/
+/* Sidebar
+/*----------------------------------------------------------------------*/
+#documenter_sidebar{
+	position:fixed;
+	left:0;
+	width:280px;
+	height:100%;
+	min-height:100%;
+	z-index:100;
+}
+#documenter_sidebar a{
+	position:relative;
+	z-index:100;
+}
+#documenter_sidebar img{
+	border:0;
+	margin:20px 0;
+	max-width: 80%;
+}
+#documenter_sidebar #documenter_logo{
+	display:block;
+	text-align: center;	
+}
+#documenter_sidebar ol{
+	font-size:12px;
+	font-weight:normal;
+	min-height:150px;
+	height:75%;
+	overflow:auto;
+}
+#documenter_sidebar ol li{
+	text-align:right;
+	padding:0;
+}
+#documenter_sidebar ol a{
+	display:block;
+	color:#000;
+	text-align:left;
+	font-size:16px;
+	padding: 10px;
+	font-weight: 500;
+	letter-spacing: 0.5px;
+	line-height:24px;
+	text-transform: capitalize;
+}
+#documenter_sidebar ol a:hover,#documenter_sidebar ol a.current{
+	-webkit-text-shadow:none;
+	-moz-text-shadow:none;
+	text-shadow:none;
+	text-decoration:none; 
+}
+#documenter_sidebar ol li ol{
+	border-top:0;
+	font-size:12px;
+	min-height:10px;
+	height:auto;
+	overflow:auto;
+	margin:0;
+}
+#documenter_sidebar ol li ol li a{
+	display:block;
+	text-align:left;
+	color: #5e656d;
+	padding: 5px 10px;
+	text-decoration: none;
+}
+#documenter_sidebar a{
+	background:#fff;
+	color:#000;
+	font-weight: 500;
+}
+#documenter_sidebar{
+	border-right:1px dotted #bdbdbd;
+}
+#documenter_sidebar ol li li a {
+	font-size: 15px;
+}
+
+div.scrollholder
+{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    overflow-y: scroll;  
+    height:100%;
+    padding:20px 0;
+}
+
+div.scroll
+{
+    position: absolute;    
+    width: 96%;
+	margin-left: 2%;   
+}
+
+/*----------------------------------------------------------------------*/
+/* Content
+/*----------------------------------------------------------------------*/
+#documenter_content > section {padding-bottom: 40px;}
+#documenter_content section{
+	padding-top:0px;
+}
+#documenter_content{
+	position:absolute;
+	right:18px;
+	left:280px;
+	padding-left:30px;
+	padding-top: 30px;
+	padding-bottom:800px;
+	min-height:100%;
+	height:auto;
+	z-index:1;
+}
+#documenter_cover img {
+	border: none;
+}
+#documenter_cover .text-logo{
+	margin: 0 auto 10px;
+	display: block;
+	text-align: center;
+	padding: 10px 0 10px 0;
+	border: none;
+}
+#documenter_cover .main-img img{
+	max-width: 100%;
+	width: 65%;
+	margin: 0 auto;
+	text-align: center;
+	display: block;
+	border: none;
+}
+.heading-container {
+	padding: 40px 15px;
+	background: #e8e6e682;
+	margin-bottom: 30px;
+}
+#documenter_content .template-heading{
+	display: block;
+	text-align: left;
+	border: none;
+	text-transform:capitalize;
+	color: #000;
+	font-size: 60px;
+	font-weight: 700;	
+	font-family: 'Roboto', sans-serif;
+	margin-bottom: 15px;
+}
+.heading-container p{
+	color:#514e4e;
+}
+.inner-heading {
+    font-weight: 600;
+}
+#documenter_cover .main-heading{
+	font-size: 27px;
+	margin-bottom: 20px;
+	padding-top: 15px;
+	font-weight: 600;
+	text-transform: uppercase;
+	color: #60a659;
+	letter-spacing: 1px;
+}
+#documenter_cover > p{
+	margin-bottom: 15px;
+}
+#documenter_cover .sub-title{
+	color: #60a659;
+	font-size: 22px;
+	line-height: 45px;
+}
+#documenter_content .main-title > h2{
+	color: #60a659;
+	font-size: 25px;
+	margin: 15px 0;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+}
+#documenter_content p {
+	margin-bottom: 10px;
+	line-height: 20px;
+	font-size: 16px;
+}
+#documenter_content img{
+	max-width: 100%;
+	margin: 18px 0;
+	border: 1px solid #ccc;
+	display: block;
+}
+.inner-body ol > li ,.inner-body ul > li{
+	letter-spacing: 0.4px;
+	line-height: 20px;
+	margin-left: 20px;
+	margin-bottom: 10px;
+}
+
+.inner-content .inner-body {
+    margin-bottom: 20px;
+}
+.imp{
+	color: #454545;
+	font-weight: 600;
+	text-transform: capitalize;
+}
+.inner-heading {
+    font-weight: 600;
+}
+.inner-body li > ul{
+	padding-left: 30px;
+}
+.configutation > span {
+    display: block;
+    margin-bottom: 10px;
+}
+#documenter_content .inner-content{
+	padding-left: 30px;
+}
+#documenter_content .inner-content .sub-title h3{
+	margin-bottom: 10px;
+}
+#documenter_sidebar ol li.current ol{
+	display:block;
+}
+
+
+
+/*----------------------------------------------------------------------*/
+/* Print Styles
+/*----------------------------------------------------------------------*/
+
+@media print {
+	 * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important;
+	-ms-filter: none !important; } /* Black prints faster: sanbeiji.com/archives/953 */
+	a, a:visited { color: #444 !important; text-decoration: underline; }
+	a[href]:after { content: " (" attr(href) ")"; }
+	abbr[title]:after { content: " (" attr(title) ")"; }
+	.ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */
+	pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
+	thead { display: table-header-group; } /* css-discuss.incutio.com/wiki/Printing_Tables */
+	tr, img { page-break-inside: avoid; }
+	@page { margin: 0.5cm; }
+	p, h2, h3 { orphans: 3; widows: 3; }
+	h2, h3{ page-break-after: avoid; }
+	hr { border-top:1px solid #000 !important;border-bottom:0 !important; }
+	
+	#documenter_sidebar{
+		-moz-box-shadow:none;
+		-webkit-box-shadow:none;
+		box-shadow:none;
+		position:absolute;
+		left:10px;
+		top:0;
+		width:100%;
+		margin-top:500px;
+	}
+	#documenter_sidebar ol:before { content: "Table of Contents"; }
+	
+	#documenter_sidebar ol{
+		border:0 !important;
+	}
+	#documenter_sidebar ol li{
+		border:0 !important;
+		text-align:left;
+	}
+	#documenter_sidebar ol li a{
+		border:0 !important;
+		text-align:left;
+		padding:4px;
+	}
+	#documenter_sidebar ol li a:hover{
+		border:0 !important;
+	}
+	#documenter_sidebar #documenter_logo{
+		display:none;
+	}
+	#documenter_sidebar #documenter_copyright{
+		display:none;
+	}
+	#documenter_content{
+		left:10px;
+	}
+	#documenter_cover{
+		margin-bottom:300px;
+	}	
+}
+
+/*----------------------------------------------------------------------*/
+/* Slider Styles
+/*----------------------------------------------------------------------*/
+
+.slides_container {
+	width:800px;
+	display:none;
+	-webkit-box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+/*
+	Each slide
+	Important:
+	Set the width of your slides
+	If height not specified height will be set by the slide content
+	Set to display block
+*/
+.slides_container div {
+	width:800px;
+	height:600px;
+	display:block;
+	background:#fff;
+}
+
+/*
+	Optional:
+	Reset list default style
+*/
+.pagination {
+	list-style-type:none !important;
+	margin:10px 0 0 0;
+	padding:0;
+}
+#documenter_content .pagination li {
+	list-style-type:none !important;
+	margin:0 5px 0 0;
+	padding:0;
+	display:inline-block;
+}
+#documenter_content .pagination li a {
+	display:block;
+	width:30px;
+	height:23px;
+	border-radius:40px;
+	background:#fff;
+	text-align:center;
+	padding:7px 0 0 0;
+	font-weight:bold;
+	-webkit-box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.2);
+	text-decoration:none;
+	font-size:16px;
+	color:#ed5f79;
+}
+
+/*
+	Optional:
+	Show the current slide in the pagination
+*/
+#documenter_content .pagination .current a {
+	background:#ed5f79;
+	color:#fff;
+}
+
+/*----------------*/
+html {
+	background-color:#fff;
+}
+
+hr {
+	border-top: 1px solid #D4D4D4;
+	border-bottom: 1px solid #FFFFFF;
+	margin: 40px 0;
+}

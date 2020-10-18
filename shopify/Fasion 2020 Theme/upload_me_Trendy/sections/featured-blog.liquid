@@ -1,0 +1,225 @@
+<div class="smartblog">
+  <div class="products_block_inner page-width">
+    <div class="row">
+    <div class="smart-desc">
+        <div class="section-header">
+          <a class="h2">{{ section.settings.main-title | escape }}</a>
+        </div>
+    </div>
+
+    {%- assign blog = blogs[section.settings.blog] -%}
+
+    {% unless blog.articles_count == 0 %}
+    <div class="row">
+      <div id="smartblog-carousel" class="smartblog-carousel-{{ section.id }} product_list owl-carousel owl-theme">
+        {% for article in blog.articles limit: section.settings.post_limit %}
+          <div class="item sds_blog_post">
+            <div class="blog_post">
+                {% if article.image %}
+                  <div class="article__grid-image-wrapper js news_module_image_holder">
+                    <a href="{{ article.url }}">
+                      <img
+                           class="article__grid-image lazyload"
+                           src="{{ article.image | img_url: '588x353' }}"
+                           data-src="{{ img_url }}"
+                           data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                           data-aspectratio="{{ article.image.aspect_ratio }}"
+                           data-sizes="auto"
+                           alt="{{ article.image.alt | escape }}">
+                           <span class="blog-hover"></span>
+                    </a>
+                  </div>
+                  <noscript>
+                    <a href="{{ article.url }}" class="article__grid-image-wrapper">
+                      {{ article | img_url: '345x345', scale: 2 | img_tag: article.title, 'article__grid-image' }}
+                    </a>
+                  </noscript>
+                {% endif %}
+                <div class="article__grid-meta{% if article.image %} article__grid-meta--has-image{% endif %} blog_content"> 
+                  <h2 class="h3 article__title sds_post_title">
+                    <a href="{{ article.url }}">{{ article.title | strip_html | truncate: 30 }}</a>
+                  </h2>
+                  <div class="smartbloginfo">
+                        {% if section.settings.blog_show_author %}
+                          <span class="article__author author">
+                             <i class="fa fa-user" aria-hidden="true"></i>
+                          {{ 'blogs.article.by_author' | t: author: article.author }}</span>
+                        {% endif %}
+                        {% if section.settings.blog_show_date %}
+                          <span class="article__date blog_date">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+
+                            <span class="day_month">{{ article.published_at | date: "%m / %d / %y" }}</span>
+                          </span>
+                        {% endif %}
+                        {% if section.settings.blog_show_comment %}
+                        <a href="{{ article.url }}#comments">
+                          <span class="comment">
+                            <i class="fa fa-comment" aria-hidden="true"></i>
+                            {{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}
+                          </span>
+                        </a>
+                        {% endif %}
+                  </div>
+                  <div class="rte article__grid-excerpt desc">
+                    {% if article.excerpt.size > 0 %}
+                      {{ article.excerpt }}
+                    {% else %}
+                      {{ article.content | strip_html | truncate: 70 }}
+                    {% endif %}
+                  </div>
+                  {% if article.tags.size > 0 %}
+                    <div class="article__tags rte">
+                      {% for tag in article.tags %}
+                        <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="article__grid-tag">{{ tag }}</a>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                  <ul class="list--inline article__meta-buttons">
+                    <li>
+                      <a href="{{ article.url }}" class="btn btn--secondary btn--small">
+                        {{ 'blogs.article.read_more' | t }}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% else %}
+      <div class="grid grid--uniform grid--blog">
+        {% for i in (1..section.settings.post_limit) %}
+          <div class="grid__item medium-up--one-third">
+            <div class="article__grid-meta">
+              <h2 class="h3 article__title">
+                <a href="#">{{ 'homepage.onboarding.blog_title' | t }}</a>
+              </h2>
+
+              {% if section.settings.blog_show_author %}
+                <span class="article__author">{{ 'homepage.onboarding.blog_author' | t }}</span>
+              {% endif %}
+
+              <div class="rte article__grid-excerpt">
+                {{ 'homepage.onboarding.blog_excerpt' | t }}
+              </div>
+
+              <ul class="list--inline article__meta-buttons">
+                <li>
+                  <a href="{{ article.url }}" class="btn btn--secondary btn--small">
+                    {{ 'blogs.article.read_more' | t }}
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endunless %}
+
+    {% if section.settings.show_view_all %}
+      <div class="view-all-btn text-center">
+        <a href="{{ blog.url }}" class="btn">
+          {{ 'blogs.article.view_all' | t }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+  </div>
+</div>
+
+<script>
+  jQuery(document).ready(function() {
+    $('.smartblog-carousel-{{ section.id }}').owlCarousel({
+      nav: true, // Show next and prev buttons
+      navText: ["<i class='material-icons'></i>","<i class='material-icons'></i>"],
+      loop: false,
+      rewind: true,
+      dots:false,
+      autoplay:false,
+      autoplayTimeout:2000,
+      responsive:{
+        0:{
+          items:1
+        },
+        544:{
+          items:2
+        },
+        768:{
+          items:2
+        },
+        992:{
+          items:2
+        },
+        1200:{
+          items:3
+        }
+      }
+    });
+  }); 
+</script>
+
+
+{% schema %}
+  {
+    "name": "Blog Posts",
+    "class": "index-section smartbloghome",
+    "settings": [
+      {
+        "type": "text",
+        "id": "main-title",
+        "label": "Main Title",
+        "default": "LATEST NEWS"
+      },
+      {
+        "id": "blog",
+        "type": "blog",
+        "label": "Blog"
+      },
+      {
+        "type": "range",
+        "id": "post_limit",
+        "label": "Posts",
+        "min": 3,
+        "max": 12,
+        "step": 3,
+        "default": 6
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_author",
+        "label": "Show Author",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show Date",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_comment",
+        "label": "Show Comment",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_view_all",
+        "label": "Show 'View All' Button",
+        "default": false
+      }
+    ],
+    "presets": [
+      {
+        "name": "Blog Posts",
+        "category": "Blog",
+        "settings": {
+          "blog": "News",
+          "post_limit": 3
+        }
+      }
+    ]
+  }
+{% endschema %}

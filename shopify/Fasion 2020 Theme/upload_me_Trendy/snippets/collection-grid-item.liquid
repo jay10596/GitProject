@@ -1,0 +1,39 @@
+{% if collection.products.first and collection.products.first.images != empty %}
+  {%- assign collection_image = collection.products.first.featured_image -%}
+{% else %}
+  {% assign collection_image = blank %}
+{% endif %}
+
+<div class="collection-grid-item">
+  
+    {% unless collection_image == blank %}
+      <div class="collection-grid-item__overlay">
+        <img 
+             src="{{ collection_image | img_url: '300x300' }}"
+             data-widths="[300]"
+             data-sizes="auto" 
+             alt="{{ collection_image | escape }}">
+      </div>
+   {% else %}
+     {% if collection == empty %}
+        <div class="collection-grid-item__overlay">
+          {% capture current %}{% cycle 1, 2, 3 %}{% endcapture %}
+          {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      {% else %}
+         <div class="collection-grid-item__overlay" style="background-image: url('{{ collection_image | img_url: '1024x1024' }}')"></div>
+      {% endif %}
+   {% endunless %}
+    <div class="collection-grid-item__title-wrapper">
+      <h3 class="collection-grid-item__title">
+        {% if collection.title == blank %}
+          {{ 'homepage.onboarding.collection_title' | t }}
+        {% else %}
+          {{ collection.title }}
+        {% endif %}
+      </h3>
+      <a href="{% if collection.products == empty %}/{% else %}{{ collection.url }}{% endif %}" class="collection-grid-total_item btn btn-primary">
+        {{ 'homepage.onboarding.btn_title' | t }}
+      </a>
+    </div>
+</div>

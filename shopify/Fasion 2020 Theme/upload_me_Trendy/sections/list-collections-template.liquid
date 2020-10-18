@@ -1,0 +1,139 @@
+<div class="page-width">
+  <div class="row">
+  <header class="section-header text-center">
+    <h2>{{ page_title }}</h2>
+  </header>
+  
+  {%- assign blocks = section.blocks | sort: 'collection.all_products_count' -%}
+  
+  {% case section.settings.grid %}
+    {% when '2' %}
+      {%- assign grid_item_width = 'medium-up--one-half' -%}
+      {%- assign image_size = '530x' -%}
+    {% when '3' %}
+      {%- assign grid_item_width = 'small--one-half medium-up--one-half large-up--one-third' -%}
+      {%- assign image_size = '350x' -%}
+  {% endcase %}
+  
+  <div class="grid grid--uniform row">
+    {% if section.settings.display_type == 'all' %}
+      {% case section.settings.sort %}
+        {% when 'products_high' or 'products_low' %}
+          {%- assign collections = collections | sort: 'all_products_count' -%}
+        {% when 'date' or 'date_reversed' %}
+          {%- assign collections = collections | sort: 'published_at' -%}
+      {% endcase %}
+      {% if section.settings.sort == 'products_low' or section.settings.sort == 'date' or section.settings.sort == 'alphabetical' %}
+        {% for collection in collections %}
+          <div class="grid__item {{ grid_item_width }}">
+            {% include 'collection-grid-item', collection_image_size: image_size %}
+          </div>
+        {% endfor %}
+      {% else %}
+        {% for collection in collections reversed %}
+          <div class="grid__item {{ grid_item_width }}">
+            {% include 'collection-grid-item', collection_image_size: image_size %}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% else %}
+      {% for block in section.blocks %}
+        <div class="grid__item {{ grid_item_width }}">
+          {%- assign collection = collections[block.settings.collection] -%}
+          {% include 'collection-grid-item', collection_image_size: image_size %}
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Collections List Page",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "All Of Your Collections Are Listed By Default. To Customize Your List, Choose 'Selected' And Add Collections."
+      },
+      {
+        "type": "radio",
+        "id": "display_type",
+        "label": "Select Collections To Show",
+        "default": "all",
+        "options": [
+          {
+            "value": "all",
+            "label": "All"
+          },
+          {
+            "value": "selected",
+            "label": "Selected"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "sort",
+        "label": "Sort Collections By:",
+        "info": "Sorting only applies when 'All' is selected",
+        "default": "alphabetical",
+        "options": [
+          {
+            "value": "products_high",
+            "label": "Product Count, High To Low"
+          },
+          {
+            "value": "products_low",
+            "label": "Product Count, Low To High"
+          },
+          {
+            "value": "alphabetical",
+            "label": "Alphabetically, A-Z"
+          },
+          {
+            "value": "alphabetical_reversed",
+            "label": "Alphabetically, Z-A"
+          },
+          {
+            "value": "date",
+            "label": "Date, Old To New"
+          },
+          {
+            "value": "date_reversed",
+            "label": "Date, New To Old"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "grid",
+        "label": "Collections Per Row",
+        "default": "3",
+        "options": [
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "label": "Collection",
+            "id": "collection",
+            "type": "collection"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

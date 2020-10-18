@@ -1,0 +1,106 @@
+<div id="ishicategoryblock">
+    {% assign i = 1 %}
+    {% if section.blocks.size > 0 %}
+    <div id="ishicategoryblock-carousel" class="ishicategoryblock-carousel-{{ section.id }} owl-carousel">
+      {% for block in section.blocks %}
+        <div id="ishicategoryblock_{{ i }}" class="ishicategoryblock-container item">
+            <div class="image-container">
+                  <a href="{{ block.settings.button_link }}">
+                    {% if block.settings.image != blank %}
+                  <img 
+                           src="{{ block.settings.image | img_url: '40x40' }}"
+                           data-src="{{ img_url }}"
+                           data-widths="[40]"
+                           data-sizes="auto"
+                           alt="{{ block.settings.title | escape }}">
+                           {% else %}
+                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }} 
+                        {% endif %}   
+                  </a>
+                </div>
+                {% if block.settings.title != blank %} 
+                  <div class="text-container">
+                    {{ block.settings.title | escape }}
+                  </div>
+                {% endif %}
+          {% assign i = i | plus: 1 %}  
+        </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+<script>
+  jQuery(document).ready(function() {
+   $('.ishicategoryblock-carousel-{{ section.id }}').owlCarousel({
+    nav:false,
+    margin: 30,
+    loop: true,
+    rewind: true,
+    autoplay:true,
+    smartSpeed:2500,
+    autoplayTimeout:5000,
+    navText: [
+      '<i class=\'material-icons\'></i>',
+      '<i class=\'material-icons\'></i>'
+    ],
+    responsive:{
+        0:{
+          items:1
+        },
+        544:{
+          items:2
+        },
+        768:{
+          items:3
+        },
+        992:{
+          items:3
+        },
+        1200:{
+          items:4
+        }
+      }
+    });
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Ishi Category Block",
+    "class": "category",
+    "settings": [
+    ],
+    "blocks": [
+      { 
+        "type": "image",
+        "name": "Category",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "Size: 40px X 40px"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Category Title"
+          },
+          {
+            "type": "url",
+            "id": "button_link",
+            "label": "Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Ishi Category Block",
+        "category": "ishi themes"
+      }
+    ]
+  }
+{% endschema %}

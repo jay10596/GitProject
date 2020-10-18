@@ -1,0 +1,2149 @@
+<!doctype html>
+<!--[if IE 6 ]><html lang="en-us" class="ie6"> <![endif]-->
+<!--[if IE 7 ]><html lang="en-us" class="ie7"> <![endif]-->
+<!--[if IE 8 ]><html lang="en-us" class="ie8"> <![endif]-->
+<!--[if (gt IE 7)|!(IE)]><!-->
+<html lang="en-us">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Trendy Documentation</title>
+<meta name="description" content="Ishi Shopify Theme">
+<meta name="author" content="etheme">
+<meta name="copyright" content="etheme">
+<meta name="date" content="2014-12-02">
+<link rel="stylesheet" href="asset/css/documenter_style.css" media="all">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="asset/js/jquery.1.6.4.js"></script>
+<script src="asset/js/jquery.scrollTo-1.4.2-min.js"></script>
+<script src="asset/js/jquery.easing.js"></script>
+<script>document.createElement('section');var duration=500,easing='swing';</script>
+<script src="asset/js/slides.min.jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script type="text/javascript">
+jQuery( document ).ready(function() {
+  jQuery( "a" ).click(function() {
+jQuery('.scrollholder').find('li').removeClass('current');
+jQuery('.scrollholder').find('a').removeClass('current');
+$( this ).parents('li').addClass('current');
+$( this ).parent().addClass('current');
+jQuery(this).addClass('current');
+var link = $(this).attr('href');
+jQuery('html, body').animate({scrollTop: jQuery(link).offset().top}, 800);
+});
+});
+</script>
+</head>
+<body>
+
+<div id="documenter_sidebar">
+	<div id="scrollholder" class="scrollholder">
+		<div id="scroll" class="scroll">
+			<a href="#introduction" id="documenter_logo">
+				<img src="asset/img/logo.png">
+			</a>
+			<ol id="documenter_nav" style="overflow:hidden">
+				<li class="main-heading"><a class="current" href="#documenter_cover">Overview</a></li> 
+					<li class="main-heading"><a href="#install_theme">Theme Installation</a></li>
+					<li class="main-heading"><a href="#update_theme">Updating Theme</a></li>
+					<li class="main-heading"><a href="#install_app">Install Apps</a></li>
+					<li class="main-heading">
+						<a href="#basic_store_configuration">Basic Store Configuration</a> 
+						<ol>
+							<li><a href="#currency">Currency Settings</a></li>							
+							<li><a href="#checkout">Checkout Settings</a></li>
+						</ol>
+					</li>
+					<li class="main-heading">
+						<a href="#theme_settings">Theme settings</a>
+						<ol>
+							<li><a href="#sliderbackground">Slider background Image</a></li>							
+							<li><a href="#loader_setting">Pre Loader</a></li>
+							<li><a href="#sidebar_setting">Sidebar</a></li>
+							<li><a href="#color_setting">color</a></li>
+							<li><a href="#breadcrumb_setting">Breadcrumb</a></li>
+							<li><a href="#typography_setting">Typography (Fonts)</a></li>
+		                    <li><a href="#socialmedia_setting">Social Media</a></li>
+						</ol>
+					</li>
+					<li class="main-heading">
+						<a href="#setup_pages">Setup Pages</a>
+						<ol>
+							<li><a href="#wishlistpage_setting">Wishlist Page</a></li>
+							<li><a href="#contactpage_setting">Contact Page</a></li>
+							<li><a href="#faqpage_setting">Faq Page</a></li>
+							<li><a href="#aboutuspage_setting">About Us Page</a></li>								
+						</ol>
+					</li>
+					<li class="main-heading current">
+								<a href="#sidebar_section_setting" class="current">Sidebar Sections</a>						
+							</li>		            <li class="main-heading">
+						<a href="#theme_settings_layout">Theme Sections</a>
+						<ol>
+							<li><a href="#header_setting">Header</a></li>							
+							<li><a href="#megamenu_setting">Mega Menu</a></li>
+							<li><a href="#ishi_headerlink_setting">Ishi Header Link</a></li> 
+							<li><a href="#ishislideshow_setting">Ishi Slideshow</a></li>
+							<li><a href="#ishicategory_setting">Ishi Category Block</a></li>
+							<li><a href="#ishibannerblock_setting">Ishi Three Banner Block</a></li>
+							<li><a href="#ishiproductblock_setting">Ishi Product Block</a></li>	
+							<li><a href="#ishidealblock_setting">Ishi Deal Block</a></li>
+							<li><a href="#ishiblogpost_setting">Ishi Blog Post Block</a></li>
+							<li><a href="#ishimanufacturer_setting">Ishi Manufacturer Block</a></li>
+							<li><a href="#footer_setting">Footer</a></li>
+		                    <li><a href="#cookieconsent_setting">Cookie Consent</a></li>
+		                    <li><a href="#newsletterpopup_setting">Newsletter Popup</a></li>
+						</ol>
+					</li>
+					<li class="main-heading"><a href="#theme_filter">Filters</a></li>
+					<li class="main-heading"><a href="#sizechart_setting">Size Chart</a></li>
+					<li class="main-heading"><a href="#theme_custom_tab">Custom Product Tab</a></li>
+					<li class="main-heading"><a href="#credits">Credits</a></li>
+			</ol>
+		</div>
+	</div>
+</div>
+
+<div id="documenter_content">
+	<div class="heading-container">
+		<h2  class="template-heading">Trendy Theme Documentation </h2>
+		<p>Thank you! We are glad that you have choosen us.</p>
+		<p>For Queries / Customisation requests, feel free to contact us.</a></p>
+	</div>
+	<!-- ======================================overview========================== -->
+		<section id="documenter_cover">		
+		   	<p>
+				Trendy is our enhanced and beautifully designed responsive Shopify theme for your online store. Trendy is rich with powerful userfriendly features that would attract more clients to your online store and boost sales!
+			</p>
+			<p>Here are some basics on installing, configuring and customizing the theme that will get you started! This document is written very carefully by keeping mind Beginners, advanced users and developers.</p>
+   			<p>If you are new to shopify. Please read SHOPIFY GUIDE first and then get along with the theme document.</p>
+   		
+		</section>
+	<!-- ======================================install theme========================== -->
+		<section id="install_theme">
+			<div class="main-title">
+	   			<h2>Theme Installation</h2>
+	   		</div>
+	   		<div class="inner-content">
+	   			<div class="inner-body">
+	   				<ol>
+	   					<li>
+	   						<strong> Extract the zip file </strong>downloded from TemplateMonster. Extracting the zip will create following folders  :
+	   						<ul>
+	   							<li>
+	   								<strong>Documentation : </strong> Contains information about theme installation and setup.
+	   							</li>
+	   							<li>
+	   								<strong>upload_me_Trendy.zip : </strong>This is the main zip file to be uploaded to shopify.
+	   							</li>
+	   							<li>
+	   								<strong>Images : </strong>This folder contains images used in the theme.
+	   							</li>
+	   						</ul>
+	   					</li>
+	   					<li>
+	   						Open your Shopify back office, then Online Store -> Themes on the left side bar.
+	   					</li>
+	   					<li>
+	   						Press <strong>Upload theme</strong> and select the <strong>"upload_me_Trendy.zip"</strong> file.
+	   					</li>
+	   					<img src="asset/img/theme-installation-2.png" alt="">
+	   					<li>
+	   						Navigate to the <strong> Theme Library </strong> section and click on <strong> Upload Theme</strong> 
+	   					</li>
+	   					<img src="asset/img/theme-installation-3.png" alt="">
+	
+	   					
+	   				</ol>
+				</div>
+	   		</div>
+		</section>
+
+	<!-- ======================================update theme========================== -->
+		<section id="update_theme">
+			<div class="main-title">
+	   			<h2>Updating Theme</h2>
+	   			<a href="https://youtu.be/G1wClFtwBqs" target="_blank"><img style="border: none;" src="asset/img/watch-video.png" alt=""></a>
+	   			<p>To update the theme without loosing your data please follow these steps : </p>
+	   		</div>
+	   		<div class="inner-content">
+	   			<div class="inner-body">
+	   				<ol>
+	   					<li>
+	   						Create copy of you current theme. Online store -> Themes -> Actions -> Duplicate.
+	   					</li>
+						<li>
+	   						Download your current theme.
+	   					</li>
+	   					<li>
+	   						Unzip your current theme. Name theme's folder "Trendy-Current"
+	   					</li>
+	   					<li>
+	   						Download latest theme version. Unzip latest theme. Name it "Trendy-Latest".
+	   					</li>
+	   					<li>
+	   						Copy theme settings file "config/settings_data.json" from current theme to latest theme. Trendy-Current/config/settings_data.json -> Trendy-Latest/config/settings_data.json.
+	   					</li>
+	   					<li>
+	   						Zip "Trendy-Latest".
+	   					</li>
+	   					<li>
+	   						Upload "Trendy-Latest.zip" to your store at Online store -> Themes -> Upload theme.
+	   					</li>
+	   					<li>
+	   						Reinstall apps.
+	   					</li>
+	   					
+	   				</ol>
+				</div>
+	   		</div>
+		</section>
+
+	<!-- ======================================install App========================== -->
+		<section id="install_app">
+			<div class="main-title">
+	   			<h2>Install Apps </h2>
+	   			<p>The theme comes with free apps which can be installed as per your use.</p>
+	   		</div>
+	   		<div class="inner-content">
+	   			<div class="sub-title">
+		   			<h3>Product Reviews app</h3>
+		   		</div>
+	   			<div class="inner-body"> 
+	   				<ol>
+	   					<li>To enable product review, <a href="https://apps.shopify.com/product-reviews" target="_blank">Install Product Reviews App</a></li>
+	   					<li>Press "Add App" button and proceed with general app installation procedure.</li>
+	   					<li>Once you are done with basic app setup, the app is ready to use.</li>
+	   				</ol>
+	   			</div>
+   			</div>
+	   		
+		</section>	
+		
+	<!-- ======================================Shop setting========================== -->
+		<section id="basic_store_configuration">
+			<div class="main-title">
+	   			<h2>Basic Store Configuration</h2>
+	   		</div>
+	   		<div class="inner-content">
+	   			<div id="currency" class="sub-title">
+					<h3>Currency Settings</h3>
+				</div>
+	   			<div class="inner-body">
+	   				<ol>
+	   					<li>From your shop admin, go to the <a href="http://shopify.com/admin/settings/general">Settings / General</a></li>
+	   					<li>Scroll down to "Currency" block. Find the "Currency" there</li>
+						<li>Select your currency and change formatting acording to your requirment.</li>
+						<strong>
+							<dl>
+								<dt>Note :</dt>
+								<dd> Click on "save" to update the changes.
+								</dd>
+							</dl>
+						</strong>
+						<img src="asset/img/currency-setting.png" alt="">
+					</ol>
+	   			</div>
+	   			<div id="checkout" class="sub-title">
+		   			<h3>Checkout Settings</h3> 
+		   		</div>
+		   		<div class="inner-body">
+	   				<ol>
+	   					<li>From your shop admin, go to the <a href="http://shopify.com/admin/settings/checkout">Settings / Checkout</a></li>
+	   					<li>You can allow/deny the customer account creation. You can also keep it optional.Generally, setting must be set to "Accounts are optional"</li>
+	   					<strong>
+							<dl>
+								<dt>Note :</dt>
+								<dd> Click on "save" to update the changes.
+								</dd>
+							</dl>
+						</strong>
+						<img src="asset/img/checkout-setting.png" alt="">
+	   				</ol>
+	   			</div>
+	   		</div>
+		</section>		
+		
+	<!-- =================Theme setting (theme customization)================= -->
+		<section id="theme_settings">
+			<div class="main-title">
+	   			<h2>theme settings </h2>
+	   			<p>It allows you to configure general theme settings like Colors, Fonts and various other options</p>
+	   		</div>
+	   		<div class="inner-content">
+	   			<div id="sliderbackground" class="sub-title">
+					<h3>Slider Background Settings</h3>
+				</div>
+	   			<div class="inner-body">
+	   				<ol>
+	   					<li>Go to Customizer &gt; Theme Settings &gt; Theme Configuration &amp; Images </li>
+	   					<img src="asset/img/theme-setting.png" alt="">
+	   					<li>Scroll down to "Slider Background Settings" and configure all the parameters as per your requirements.</li>
+	   					<img src="asset/img/sliderbackground.png" alt="">
+					</ol>
+					<table class="table table-bordered table-striped">
+						<thead class="table-dark"> 
+							<tr>
+                            <td>#</td>
+                            <td class="name">Parameter</td>
+                            <td class="value">Value</td>
+                            <td>Description</td>
+                        </tr>
+						</thead>
+                        <tbody>                        	
+                            <tr>
+                                <td>1</td>
+                                <td>Background Image</td>
+                                <td>image</td>
+                                <td>Sets a background image for Slider.</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Background Color</td>
+                                <td>color</td>
+                                <td>Sets background color for Slider. Works only if image is not configured.<br>
+                                </td>
+                            </tr>    						
+                        </tbody>
+                    </table>
+	   			</div>
+	   		</div>
+	   		<div class="inner-content">
+	   			<div id="loader_setting" class="sub-title">
+					<h3>Pre Loader Settings</h3>
+				</div>
+	   			<div class="inner-body">
+	   				<ol>
+	   					<li>Go to Customizer > Theme Settings > Theme Configuration & Images </li>
+	   					<img src="asset/img/theme-setting.png" alt="">
+	   					<li>Scroll down to "Pre Loader". Select a footer from the dropdown that shows available Loaders.</li>
+	   					<img src="asset/img/loader-setting.png" alt="">
+					</ol>
+					<strong>
+						<p>Following are the designs of available loaderss in the theme : </p>
+					</strong>
+
+					<div class="row">
+						<div class="col-md-2">
+							<strong><p class="img-title text-center">Loader1</p></strong>
+							<p class="img-title text-center">Round Rotate Zoom</p>
+							<img src="asset/img/loader1.png" alt="">
+						</div>
+						<div class="col-md-2">
+							<strong><p class="img-title text-center">Loader2</p></strong>
+							<p class="img-title text-center">Round Rotate Scale</p>
+							<img src="asset/img/loader2.png" alt="">
+						</div>
+						<div class="col-md-2">
+							<strong><p class="img-title text-center">Loader3</p></strong>
+							<p class="img-title text-center">Rotating Square</p>
+							<img src="asset/img/loader3.png" alt="">
+						</div>
+						<div class="col-md-2">
+							<strong><p class="img-title text-center">Loader4</p></strong>
+							<p class="img-title text-center">Fliping Disk</p>
+							<img src="asset/img/loader4.png" alt="">
+						</div>
+						<div class="col-md-2">
+							<strong><p class="img-title text-center">Loader5</p></strong>
+							<p class="img-title text-center">Fliping Triangle</p>
+							<img src="asset/img/loader5.png" alt="">
+						</div>
+						<div class="col-md-2">
+							<strong><p class="img-title text-center">Loader6</p></strong>
+							<p class="img-title text-center">Fliping Square</p>
+							<img src="asset/img/loader6.png" alt="">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2">
+							<strong><p class="img-title text-center">Loader7</p></strong>
+							<p class="img-title text-center">Native Loader</p>
+							<img src="asset/img/loader7.png" alt="">
+						</div>
+						<div class="col-md-2">
+							<strong><p class="img-title text-center">Loader8</p></strong>
+							<p class="img-title text-center">Zoomout Disk</p>
+							<img src="asset/img/loader8.png" alt="">
+						</div>
+						<div class="col-md-2">
+							<strong><p class="img-title text-center">Loader9</p></strong>
+							<p class="img-title text-center"> Windows Loader</p>
+							<img src="asset/img/loader9.png" alt="">
+						</div>
+						<div class="col-md-2">
+							<strong><p class="img-title text-center">Loader10</p></strong>
+							<p class="img-title text-center">Rotating Circle</p>
+							<img src="asset/img/loader10.png" alt="">
+						</div>
+					</div>
+					<strong>
+						<dl>
+							<dt>Note :</dt>
+							<dd>You can configure other footer content when you configure the sections of the theme.</dd>
+						</dl>
+					</strong>
+	   			</div>
+	   		</div>	   		
+	   		<div class="inner-content">
+	   			<div id="sidebar_setting" class="sub-title"> 
+					<h3>Sidebar</h3>
+				</div>
+	   			<div class="inner-body">
+	   				<ol>
+	   					<li>Go to Customizer > Theme Settings > Theme Configuration & Images </li>
+	   					<img src="asset/img/theme-setting.png" alt="">
+	   					<li>Configure the parameters as per your requirements.</li>
+	   					<img src="asset/img/sidebar-setting.png" alt="">
+					</ol>
+	   			</div>
+	   		</div>
+	   		<div class="inner-content">
+	   			<div id="breadcrumb_setting" class="sub-title">
+					<h3>Breadcrumb Settings</h3>
+				</div>
+	   			<div class="inner-body">
+	   				<ol>
+	   					<li>Go to Customizer &gt; Theme Settings &gt; Theme Configuration &amp; Images </li>
+	   					<img src="asset/img/theme-setting.png" alt="">
+	   					<li>Scroll down to "Breadcrumb Settings" and configure all the parameters as per your requirements.</li>
+	   					<img src="asset/img/breadcrumb-setting.png" alt="">
+					</ol>
+					<table class="table table-bordered table-striped">
+						<thead class="table-dark"> 
+							<tr>
+                            <td>#</td>
+                            <td class="name">Parameter</td>
+                            <td class="value">Value</td>
+                            <td>Description</td>
+                        </tr>
+						</thead>
+                        <tbody>
+                        	<tr>
+                                <td>1</td>
+                                <td>Enable Breadcrumb?</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show breadcrumb.</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Breadcrumb Image</td>
+                                <td>image</td>
+                                <td>Sets a background image for breadcrumb.</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Background Color</td>
+                                <td>color</td>
+                                <td>Sets background color for breadcrumb. Works only if image is not configured or image is png.<br>
+                                </td>
+                            </tr>
+    						<tr>
+                                <td>4</td>
+                                <td>Text Color</td>
+                                <td>color</td>
+                                <td>Choose a color for the text of the breadcrumb</td>
+                            </tr>
+                        </tbody>
+                    </table>
+	   			</div>
+	   		</div>
+	   		<div class="inner-content">
+	   			<div id="color_setting" class="sub-title">
+					<h3>Color Settings</h3>
+				</div>
+	   			<div class="inner-body">
+	   				<ol>
+	   					<li>Go to Customizer > Theme Settings > Colors </li>
+	   					<img src="asset/img/theme-setting2.png" alt="">
+	   					<li>Configure Header, Footer, Basic Theme Color, Button Colors and Product Icon Colors as per requirement.</li>
+	   					<img src="asset/img/color-setting.png" alt="">
+					</ol>
+	   			</div>
+	   		</div>
+	   		<div class="inner-content">
+	   			<div id="typography_setting" class="sub-title">
+					<h3>Typography Settings</h3>
+				</div>
+	   			<div class="inner-body">
+	   				<ol>
+	   					<li>Go to Customizer > Theme Settings > Typography </li>
+	   					<img src="asset/img/theme-setting3.png" alt="">
+	   					<li>Configure Fonts as per your requirements.</li>
+	   					<img src="asset/img/typography-setting.png" alt="">
+					</ol>
+					<table class="table table-bordered table-striped">
+						<thead class="table-dark"> 
+							<tr>
+                            <td>#</td>
+                            <td class="name">Parameter</td>
+                            <td class="value">Value</td>
+                            <td>Description</td>
+                        </tr>
+						</thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Primary Font</td>
+                                <td>Font</td>
+                                <td>Configure the main font of the theme. This font is used in most of the parts of the theme.<br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Secondary Font</td>
+                                <td>Font</td>
+                                <td>Configure the secondary font of the theme. This font is  used in some  parts of the theme.<br>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+	   			</div>
+	   		</div>
+	   		<div class="inner-content">
+	   			<div id="socialmedia_setting" class="sub-title">
+					<h3>Social Media</h3>
+				</div>
+	   			<div class="inner-body">
+	   				<ol>
+	   					<li>Go to Customizer > Theme Settings > Social Media </li>
+	   					<img src="asset/img/theme-setting4.png" alt="">
+	   					<li>Configure your desired social links. These social links are generally displayed in the store's footer.</li>
+					</ol>
+	   			</div>
+	   		</div>
+		</section>
+	<!-- ======================================page setting ========================== -->
+		<section id="setup_pages">	
+			<div class="main-title">
+				<h2>Setup Pages</h2>
+				<p>Online Store > Pages click button "Add a page"</p>
+			</div>
+			<div class="inner-content">
+	   			<div class="inner-body">
+					<img src="asset/img/pages.png" alt="">
+	   			</div>
+	   		</div>
+	   		<div class="inner-content">
+	   			<div id="wishlistpage_setting" class="sub-title"> 
+					<h3>Wishlist Page</h3>
+				</div>
+	   			<div class="inner-body">
+	   				<ol>
+	   					<li>Configure Title of the page "WishList".</li>
+	   					<li>Select Visibility: <strong>Visible</strong></li>
+	   					<li>Select Template: <strong>page.wishlist</strong></li>
+	   					<img src="asset/img/wishlist.png" alt="">
+					</ol>
+	   			</div>
+	   		</div>
+	   		<div class="inner-content">
+	   			<div id="contactpage_setting" class="sub-title"> 
+					<h3>Contact Us Page</h3>
+				</div>
+	   			<div class="inner-body">
+	   				<ol>
+	   					<li>Configure Title of the page "Contact us".</li>
+	   					<li>Select Visibility: <strong>Visible</strong></li>
+	   					<li>Select Template: <strong>page.contact</strong></li>
+	   					<img src="asset/img/contactus.png" alt="">
+					</ol>
+					<p>To configure contact us page, navigate to Customizer > Contact Us Page and configure required fields. </p>
+	   				<img src="asset/img/contactpage-settings.png" alt="">
+	   				<table class="table table-bordered table-striped">
+						<thead class="table-dark"> 
+							<tr>
+                            <td>#</td>
+                            <td class="name">Parameter</td>
+                            <td class="value">Value</td>
+                            <td>Description</td>
+                        </tr>
+						</thead>
+                        <tbody>
+                        	<tr>
+                                <td>1</td>
+                                <td>Banner With Address</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show a section banner on the left and address on the right side on the contact page.</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Contact Banner</td>
+                                <td>image</td>
+                                <td>Upload the contact page banner image here.</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Heading</td>
+                                <td>Text</td>
+                                <td>Configure the title of the address area.</td>
+                            </tr>
+    						<tr>
+                                <td>4</td>
+                                <td>Sub Heading</td>
+                                <td>Text</td>
+                                <td>Configure sub title of the address area.</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Additional Info</td>
+                                <td>Text</td>
+                                <td>Write the additional information description to be displayed with the address of the store.</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Google Map</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show embedded google map on the contact page.</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Google Map Code</td>
+                                <td>Iframe</td>
+                                <td>Put the iframe code that you can generate from google maps.</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Contact Form</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show up contact form on the contact us page.</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Title</td>
+                                <td>Text</td>
+                                <td>Configure the title of the contact us form.</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Sub Title</td>
+                                <td>Text</td>
+                                <td>Configure the subtitle of the contact us form.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+	   			</div>
+	   		</div>
+	   		<div class="inner-content">
+	   			<div id="faqpage_setting" class="sub-title"> 
+					<h3>FAQ Page</h3>
+				</div>
+	   			<div class="inner-body">
+	   				<ol>
+	   					<li>Configure Title of the page "FAQ".</li>
+	   					<li>Select Visibility: <strong>Visible</strong></li>
+	   					<li>Select Template: <strong>page.faq</strong></li>
+	   					<img src="asset/img/faq.png" alt="">
+					</ol>
+					<p>To configure FAQ page, navigate to Customizer > FAQ Page and configure required fields.</p>
+	   				<img src="asset/img/faqpage-settings.png" alt="">
+	   				<table class="table table-bordered table-striped">
+						<thead class="table-dark"> 
+							<tr>
+                            <td>#</td>
+                            <td class="name">Parameter</td>
+                            <td class="value">Value</td>
+                            <td>Description</td>
+                        </tr>
+						</thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>FAQ Title</td>
+                                <td>Text</td>
+                                <td>Enter the title of the FAQ Section.</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>FAQ Count</td>
+                                <td>True / False</td>
+                                <td>Check if you want to display serial number on each question.</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="text-center">Content (You can add as many FAQs you want.)</td>
+                            </tr>
+    						<tr>
+                                <td>3</td>
+                                <td>FAQ Question</td>
+                                <td>Text</td>
+                                <td>Configure the Question for the FAQ.</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>FAQ Answer</td>
+                                <td>Text</td>
+                                <td>Configure the Answer for the FAQ.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+	   			</div>
+	   		</div>
+	   		<div class="inner-content">
+	   			<div id="aboutuspage_setting" class="sub-title"> 
+					<h3>About Us Page</h3>
+				</div>
+	   			<div class="inner-body">
+	   				<ol>
+	   					<li>Configure Title of the page "About Us".</li>
+	   					<li>Select Visibility: <strong>Visible</strong></li>
+	   					<li>Select Template: <strong>page.aboutus</strong></li>
+	   					<img src="asset/img/about.png" alt="">
+					</ol>
+					<p>To configure About Us page, navigate to Customizer > About Us Page and configure required fields. </p>
+	   				<img src="asset/img/aboutpage-settings.png" alt="">
+	   				<table class="table table-bordered table-striped">
+						<thead class="table-dark"> 
+							<tr>
+                            <td>#</td>
+                            <td class="name">Parameter</td>
+                            <td class="value">Value</td>
+                            <td>Description</td>
+                        </tr>
+						</thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Main Title</td>
+                                <td>Text</td>
+                                <td>Configure the title of about us page.</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>About Banner Block</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show banner with description block on the contact page</td>
+                            </tr>
+    						<tr>
+                                <td>3</td>
+                                <td>About Banner Image</td>
+                                <td>Image</td>
+                                <td>Configure the banner image for the section</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Hover</td>
+                                <td>Select</td>
+                                <td>Select a hover for the banner image.</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Link</td>
+                                <td>URL</td>
+                                <td>Configure the URL to which customer should be redirected on clicking the banner image.</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Heading</td>
+                                <td>Text</td>
+                                <td>Configure the heading of the description.</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Decripition</td>
+                                <td>Text</td>
+                                <td>Configure the description.</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Button Text</td>
+                                <td>Text</td>
+                                <td>Configure button text.</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Link</td>
+                                <td>URL</td>
+                                <td>Configure the URL to which customer should be redirected on clicking the Button.</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>Service Section Title</td>
+                                <td>Text</td>
+                                <td>Configure the title of the services section.</td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>Service Section Sub Title</td>
+                                <td>Text</td>
+                                <td>Configure sub title of the services section.</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="text-center">Content (Services)</td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>Service Image</td>
+                                <td>Image</td>
+                                <td>Configure the image of the service.</td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>Service Heading</td>
+                                <td>Text</td>
+                                <td>Configure the heading of the service.</td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>Service Description</td>
+                                <td>Text</td>
+                                <td>Configure the description of the service.</td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>Service Link</td>
+                                <td>URL</td>
+                                <td>Configure the URL to which customer should be redirected on clicking the service.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+	   			</div>
+	   		</div>	   		
+		</section>
+
+<!-- =========================== Sidebar Section========================= -->
+
+		<section id="sidebar_section_setting">
+	    	<div class="main-title"> 
+				<h2>Sidebar Sections</h2>
+				<p>Sidebar shows Collection, Banners, Filter, Testimonial, Categories at Left side of theme.</p>
+			</div>
+	    	<div class="inner-content">	
+	   			<div class="inner-body">
+	   				<ol>
+	   					<img src="asset/img/Sidebar_left_setting.png" alt="">
+					</ol>
+					<p>To configure Sidebar, navigate to Customizer &gt; Sidebar and configure required fields. </p>
+	   				<table class="table table-bordered table-striped">
+						<thead class="table-dark"> 
+							<tr>
+                            <td>#</td>
+                            <td class="name">Parameter</td>
+                            <td class="value">Value</td>
+                            <td>Description</td>
+                        </tr>
+						</thead>
+                        <tbody>
+                        	<tr>
+                                <td colspan="4" class="text-center">Category Menu Block</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Select Category Menu</td>
+                                <td>Select</td>
+                                <td>Select a Category Menu for the Sidebar. The Category menu is not displayed on the Homepage.</td>
+                            </tr>  
+                            <tr>
+                                <td colspan="4" class="text-center">Filter Configuration</td>
+                            </tr>
+                             <tr>
+                                <td>2</td>
+                                <td>Show Filter</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show Filter in the Sidebar.</td>
+                            </tr> 
+                            <tr>
+                                <td colspan="4" class="text-center">Left Banner Block</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Show on Homepage only?</td>
+                                <td>True / False</td>
+                                <td>Check if you want to Show on Homepage only?.</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Image</td>
+                                <td>Image</td>
+                                <td>Configure the image of the Left banner.</td>
+                            </tr>   
+                            <tr>
+                                <td>5</td>
+                                <td>Scale Banner</td>
+                                <td>True/False</td>
+                                <td>Check if you want the banner to zoom on hover.</td>
+                            </tr>                         
+                            <tr>
+                                <td>6</td>
+                                <td>Hover</td>
+                                <td>Select</td>
+                                <td>Select the hover that should be applied when customer hovers on the banner.</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Link</td>
+                                <td>URL</td>
+                                <td>Configure the URL to which customer should be redirected on clicking the banner.</td>
+                            </tr>
+                            
+                            <tr>
+                                <td colspan="4" class="text-center">Collection Block-1</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Show on Homepage only? </td>
+                                <td>True/False</td>
+                                <td>Check if you want to Show Collection-1 on Home Page Only.</td>
+                            </tr>
+                             <tr>
+                                <td>9</td>
+                                <td>Collection1 Title</td>
+                                <td>Text</td>
+                                <td>Configure the Title of the Collection.</td>
+                            </tr>
+                             <tr> 
+                                <td>10</td>
+                                <td>Collection</td>
+                                <td>Select</td>
+                                <td>Configure the collection of products to be shown.</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>Total Product From Collection-1</td>
+                                <td>Number</td>
+                                <td>Configure total number of products that should be fetched from the collection.</td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>Show View All Button</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show view all button which redirects user to collection page on click.
+                            	</td>
+                            </tr> 
+                             <tr>
+                                <td colspan="4" class="text-center">Newsletter Configuration</td>
+                            </tr>
+  							<tr>
+                                <td>13</td>
+                                <td>Title</td>
+                                <td>Text</td>
+                                <td>Configure the Title of the Newsletter.</td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>Sub Title</td>
+                                <td>Text</td>
+                                <td>Configure the Sub Title of the Newsletter.</td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>Description</td>
+                                <td>Text</td>
+                                <td>Configure the Description of the Newsletter.</td>
+                            </tr>
+                             <tr>
+                                <td colspan="4" class="text-center">Collection Block-2</td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>Show on Homepage only? </td>
+                                <td>True/False</td>
+                                <td>Check if you want to Show Collection-2 on Home Page Only.</td>
+                            </tr>
+                             <tr>
+                                <td>17</td>
+                                <td>Collection2 Title</td>
+                                <td>Text</td>
+                                <td>Configure the Title of the Collection.</td>
+                            </tr>
+                             <tr> 
+                                <td>18</td>
+                                <td>Collection</td>
+                                <td>Select</td>
+                                <td>Configure the collection of products to be shown.</td>
+                            </tr>
+                            <tr>
+                                <td>19</td>
+                                <td>Total Product From Collection-2</td>
+                                <td>Number</td>
+                                <td>Configure total number of products that should be fetched from the collection.</td>
+                            </tr>
+                            <tr>
+                                <td>20</td>
+                                <td>Show View All Button</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show view all button which redirects user to collection page on click.
+                        		</td>
+                            </tr> 
+                            <tr>
+                                <td colspan="4" class="text-center">Left Banner Block2</td>
+                            </tr>
+                            <tr>
+                                <td>21</td>
+                                <td>Show on Homepage only?</td>
+                                <td>True / False</td>
+                                <td>Check if you want to Show on Homepage only?.</td>
+                            </tr>
+                            <tr>
+                                <td>22</td>
+                                <td>Image</td>
+                                <td>Image</td>
+                                <td>Configure the image of the Left banner.</td>
+                            </tr>    
+                            <tr>
+                                <td>23</td>
+                                <td>Scale Banner</td>
+                                <td>True/False</td>
+                                <td>Check if you want the banner2 to zoom on hover.</td>
+                            </tr>                        
+                            <tr>
+                                <td>24</td>
+                                <td>Hover</td>
+                                <td>Select</td>
+                                <td>Select the hover that should be applied when customer hovers on the banner.</td>
+                            </tr>
+                            <tr>
+                                <td>25</td>
+                                <td>Link</td>
+                                <td>URL</td>
+                                <td>Configure the URL to which customer should be redirected on clicking the banner.</td>
+                            </tr>
+                            
+                            <tr>
+                                <td colspan="4" class="text-center">Testimonial Configuration</td>
+                            </tr>
+                            <tr>
+                                <td>26</td>
+                                <td>Main Title</td>
+                                <td>Text</td>
+                                <td>Configure the Main Title of the Testimonial.</td>
+                            </tr> 
+                            <tr>
+                                <td colspan="4" class="text-center">Content (Testimonials)</td>
+                            </tr>
+                            <tr>
+                                <td>27</td>
+                                <td>Testimonial's Image</td>
+                                <td>Image</td>
+                                <td>Configure the image for the testimonial.</td>
+                            </tr>
+                            <tr>
+                                <td>28</td>
+                                <td>Testimonial's Name</td>
+                                <td>Text</td>
+                                <td>Configure the name for testimonial.</td>
+                            </tr>
+                            <tr>
+                                <td>29</td>
+                                <td>Testimonial's Profession</td>
+                                <td>Text</td>
+                                <td>Configure the Profession for testominal.</td>
+                            </tr>
+                            <tr>
+                                <td>30</td>
+                                <td>Testimonial's Description</td>
+                                <td>Text</td>
+                                <td>Enter the description for the testimonial.</td>
+                            </tr>                            
+                        </tbody>
+                    </table>
+	   			</div>
+	   		</div>
+	    </section>
+
+
+	<!-- ===========================Section setting for layout-1========================= -->
+
+	  	<section id="theme_settings_layout">
+	  		<div class="main-title">
+				<h2>Theme Sections</h2>
+			</div>
+			<div class="inner-content">
+	   			<div class="inner-body">
+					<ol>
+						<li>To add a new Section Go to Customizer > Sections > Add Section.</li>
+						<li>
+							Configure the required parameters and click on Save. The newly added section is added to the end of all the added sections
+						</li>
+					</ol>
+					<p>Following is a list of sections that you can add and use in the theme.</p>
+	   			</div>
+	   		</div>	
+	  	</section>
+	  	<section id="header_setting">
+	  		<div class="main-title">
+				<h2>Header</h2>
+				<p>To configure Header, navigate to Customizer &gt; Header and configure required fields. </p>
+				<img src="asset/img/header-setting1.png" alt="">
+			</div>
+			<div class="inner-content">
+	   			<div class="sub-title"> 
+					<h3>Header</h3>
+				</div>
+	   			<div class="inner-body">
+	   				<ol>
+	   					<li>Configure required parameters of header.</li>
+					</ol>	   				
+					<table class="table table-bordered table-striped">
+						<thead class="table-dark"> 
+							<tr>
+                            <td>#</td>
+                            <td class="name">Parameter</td>
+                            <td class="value">Value</td>
+                            <td>Description</td>
+                        </tr>
+						</thead>
+                        <tbody>
+                        	<tr>
+                                <td>1</td>
+                                <td>Theme Logo Image</td>
+                                <td>Image</td>
+                                <td>Configure the logo of the store here.</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Max Logo Width</td>
+                                <td>Number</td>
+                                <td>Configure the max size of the logo in pixels.</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Show Contact</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show Contact in the header.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+	   			</div>
+	   		</div> 
+		</section>
+		<section id="megamenu_setting">
+	  		<div class="main-title">
+				<h2>Mega Menu</h2>
+				<p>To configure Mega Menu, navigate to Customizer > Mega Menu and configure required fields. </p>
+			</div>
+			<div class="inner-content">
+	   			<div class="sub-title">
+					<h3>Creating a Navigation</h3>
+				</div>
+	   			<div class="inner-body">
+	   				<ol>
+	   					<li>Go to Online store -> Navigation.</li>
+	   					<img src="asset/img/menu-settings1.png" alt="">
+	   					<li>Click on "Add Menu" to create a new menu</li>
+	   					<li>Enter menu title and add menu items.</li>
+	   					<img src="asset/img/menu-settings2.png" alt="">
+	   					<img>
+					</ol>	
+	   			</div>
+	   		</div> 
+	   		<div class="inner-content">
+	   			<div class="sub-title">
+					<h3>Creating a menu without a dropdown.</h3>
+				</div>
+	   			<div class="inner-body">
+	   				<ol>
+	   					<li>Navigate to Customizer > Mega Menu.</li>
+	   					<img src="asset/img/menu-settings3.png" alt="">
+	   					<li>Click on "Add Column".</li>
+	   					<li> Enter Top Heading and Top Heading Link. You can also show flags like New, Hot, Sale by selecting these options below the link.</li>
+	   					<img src="asset/img/menu-settings4.png" alt="">
+	   					<li>Click on Save. This will create a simple link on the mega menu.</li>
+					</ol>	
+	   			</div>
+	   		</div> 
+
+	   		<div class="inner-content">
+	   			<div class="sub-title">
+					<h3>Creating a menu with a dropdown links and images.</h3>
+				</div>
+	   			<div class="inner-body">
+	   				<ol>
+	   					<li>Navigate to Customizer > Mega Menu.</li>
+	   					<img src="asset/img/menu-settings3.png" alt="">
+	   					<li>Click on "Add Column".</li>
+	   					<li> Refer following image to configure each links, images or products on the dropdown. If a something is not configured, it will not appear on the dropdown</li>
+	   					<img src="asset/img/mega-menu-setting2.png" alt="">
+	   					<li>Click on Save. This will create a simple link on the mega menu.</li>
+					</ol>	
+	   			</div>
+	   		</div> 
+		</section>
+		<section id="ishi_headerlink_setting">
+	  		<div class="main-title">
+				<h2>Header Link</h2>
+				<p>Header link block shows a horizontal list of links in the header of the theme usually besides vertical menu.</p>
+				<p>To configure Header Link, navigate to Customizer &gt; Header Link and configure required fields. </p>
+				
+			</div>
+			<div class="inner-content">
+	   			<div class="inner-body">
+	   				<ol>
+	   					<img src="asset/img/headerlink-setting.png" alt="">
+	   					<li>Configure required parameters of Header Link.</li>
+					</ol>	   				
+					<table class="table table-bordered table-striped">
+						<thead class="table-dark"> 
+							<tr>
+                            <td>#</td>
+                            <td class="name">Parameter</td>
+                            <td class="value">Value</td>
+                            <td>Description</td>
+                        </tr>
+						</thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Link Text</td>
+                                <td>Text</td>
+                                <td>Configure the title of the link.</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Link</td>
+                                <td>URL</td>
+                                <td>Configue the URL of the link to which the customer must be redirect to.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+	   			</div>
+	   		</div>
+		</section>	
+		<section id="ishislideshow_setting">
+	  		<div class="main-title">
+				<h2>Ishi Slideshow</h2>
+				<p>To configure Slideshow, navigate to Customizer &gt; Slideshow and configure required fields. </p>
+			</div>
+			<div class="inner-content">
+	   			<div class="inner-body">
+	   				<img src="asset/img/simpleslider-setting.png" alt="">
+	   				<ol>
+	   					<li>Configure required parameters of Slideshow.</li>
+					</ol>	   				
+					<table class="table table-bordered table-striped">
+						<thead class="table-dark"> 
+							<tr>
+                            <td>#</td>
+                            <td class="name">Parameter</td>
+                            <td class="value">Value</td>
+                            <td>Description</td>
+                        </tr>
+						</thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Slider Image</td>
+                                <td>Image</td>
+                                <td>Configure the image for the slider.</td>
+                            </tr>
+							<tr>
+                                <td>2</td>
+                                <td>Link</td>
+                                <td>URL</td>
+                                <td>Configure the URL to which customer should be redirected on clicking the slider.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+	   			</div>
+	   		</div>
+		</section>
+		<section id="ishicategory_setting">
+	  		<div class="main-title">
+				<h2>Ishi Category Block</h2>
+				<p>Displays images as a slider or as a grid on the store. You can add as many images and Menu you want.</p>
+				<p>To configure Ishi Category Block, navigate to Customizer &gt; Ishi Category Block and configure required fields. </p>
+			</div>
+			<div class="inner-content">
+	   			<div class="inner-body">
+	   				<img src="asset/img/categorystyle1-setting.png" alt="">
+	   				<ol>
+	   					<li>Configure required parameters of Ishi Category Block.</li>
+					</ol>	   				
+					<table class="table table-bordered table-striped">
+						<thead class="table-dark"> 
+							<tr>
+                            <td>#</td>
+                            <td class="name">Parameter</td>
+                            <td class="value">Value</td>
+                            <td>Description</td>
+                        </tr>
+						</thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Image</td>
+                                <td>Image</td>
+                                <td>Configure the image for the category.</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Title</td>
+                                <td>Text</td>
+                                <td>Configure the title of the category.</td>
+                            </tr>
+							<tr>
+                                <td>3</td>
+                                <td>Link</td>
+                                <td>URL</td>
+                                <td>Configure the URL to which customer should be redirected on clicking the category.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+	   			</div>
+	   		</div>
+		</section>
+		<section id="ishibannerblock_setting">
+	  		<div class="main-title">
+				<h2>Ishi Three Banner Block</h2>
+				<p>Shows Three banners on the store. The banners usually shows deals, new launches and other attractive offers of the store. Each available option are explained below.</p>
+				<p>To configure Ishi Three Banner Block, navigate to Customizer &gt; Ishi Three Banner Block and configure required fields. </p>
+			</div>
+	   		<div class="inner-content">
+	   			<div class="inner-body">
+	   				<img src="asset/img/bannerblock-setting.png" alt="">
+	   				<ol>
+	   					<li>Configure required parameters of Ishi Three Banner Block.</li>
+					</ol>	   				
+					<table class="table table-bordered table-striped">
+						<thead class="table-dark"> 
+							<tr>
+                            <td>#</td>
+                            <td class="name">Parameter</td>
+                            <td class="value">Value</td>
+                            <td>Description</td>
+                        </tr>
+						</thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Image</td>
+                                <td>Image</td>
+                                <td>Configure the image of the banner.</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Scale Banner</td>
+                                <td>True/False</td>
+                                <td>Check if you want the banner to zoom on hover.</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Hover</td>
+                                <td>Select</td>
+                                <td>Select the hover that should be applied when customer hovers on the banner.</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Link</td>
+                                <td>URL</td>
+                                <td>Configure the URL to which customer should be redirected on clicking the banner.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+	   			</div>
+	   		</div>
+		</section>
+		<section id="ishiproductblock_setting">
+	  		<div class="main-title">
+				<h2>Ishi Product Block</h2>
+				<p>Displays the product collections in the form of tabs. You can add products into a collection and configure the collection in this section to show up products. </p>
+				<p>To configure Ishi Product Block, navigate to Customizer &gt; Ishi Product Block and configure required fields. </p>
+			</div>
+			<div class="inner-content">
+	   			<div class="inner-body">
+	   				<img src="asset/img/productstyle1-setting.png" alt="">
+	   				<ol>
+	   					<li>Configure required parameters of Ishi Product Block.</li>
+					</ol>	   				
+					<table class="table table-bordered table-striped">
+						<thead class="table-dark"> 
+							<tr>
+                            <td>#</td>
+                            <td class="name">Parameter</td>
+                            <td class="value">Value</td>
+                            <td>Description</td>
+                        </tr>
+						</thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Main Title</td>
+                                <td>Text</td>
+                                <td>Configure main title of the section.</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Total Product From Collection</td>
+                                <td>Number</td>
+                                <td>Configure total number of products that should be fetched from the collection.</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Max Products Columns For Mobile View</td>
+                                <td>Number</td>
+                                <td>Configure maximum number of columns for mobile view.</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Max Products Columns For Small Tablet View</td>
+                                <td>Number</td>
+                                <td>Configure number of columns for tablet view.</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Max Products Columns For Tablet View</td>
+                                <td>Number</td>
+                                <td>Configure number of columns for tablet view.</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Max Products Columns For Laptop View</td>
+                                <td>Number</td>
+                                <td>Configure number of columns for laptop view.</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Max Products Columns For Desktop View</td>
+                                <td>Number</td>
+                                <td>Configure number of columns for Desktop view.</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Max Products Rows</td>
+                                <td>Select</td>
+                                <td>Configure number of rows to be shown.</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="text-center">Content (Product Block)</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Product Tab Title</td>
+                                <td>Text</td>
+                                <td>Configure the tab title of the block</td>
+                            </tr>
+                            <tr> 
+                                <td>10</td>
+                                <td>Collection</td>
+                                <td>Select</td>
+                                <td>Configure the collection of products to be shown.</td>
+                            </tr>
+                           <tr>
+                                <td>11</td>
+                                <td>Show View All Button</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show view all button which redirects user to collection page on click.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+	   			</div>
+	   		</div>
+		</section>
+		<section id="ishidealblock_setting">
+	  		<div class="main-title">
+				<h2>Ishi Deal Block</h2>
+				<p>Displays the special deal product.</p>
+				<p>To configure Ishi Deal Block, navigate to Customizer &gt; Ishi Special deal and configure required fields. </p>
+			</div>
+			<div class="inner-content">
+	   			<div class="inner-body">
+	   				<img src="asset/img/dealproductstyle1-setting.png" alt="">
+	   				<ol>
+	   					<li>Configure required parameters of Ishi Special deal.</li>
+					</ol>	   				
+					<table class="table table-bordered table-striped">
+						<thead class="table-dark"> 
+							<tr>
+                            <td>#</td>
+                            <td class="name">Parameter</td>
+                            <td class="value">Value</td>
+                            <td>Description</td>
+                        </tr>
+						</thead>
+                        <tbody>                        	
+                            <tr>
+                                <td>1</td>
+                                <td>Main Title</td>
+                                <td>Text</td>
+                                <td>Configure main title of the section.</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="text-center">Content (Deal Product)</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Select Your Product</td>
+                                <td>Select</td>
+                                <td>Select the product that you want to show up in the deals.</td>
+                            </tr>
+                            <tr> 
+                                <td>3</td>
+                                <td>Start Date</td>
+                                <td>Text</td>
+                                <td>Configure the starting date of the deal in the YYYY-MM-DD format.</td>
+                            </tr>
+                           <tr>
+                                <td>4</td>
+                                <td>End Date</td>
+                                <td>Text</td>
+                                <td>Configure the ending date of the deal in the YYYY-MM-DD format.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+	   			</div>
+	   		</div>
+		</section>
+		<section id="ishiblogpost_setting">
+	  		<div class="main-title">
+				<h2>Blog Post</h2>
+				<p>Displays a few blogs on the home page of your store.</p>
+				<p>To configure Blog Post, navigate to Customizer &gt; Blog Post and configure required fields. </p>
+			</div>
+			<div class="inner-content">
+	   			<div class="inner-body">
+					<img src="asset/img/blogstyle1-setting.png" alt="">
+	   				<ol>
+	   					<li>Configure required parameters of Blog Post.</li>
+					</ol>	   				 
+					<table class="table table-bordered table-striped">
+						<thead class="table-dark">  
+							<tr>
+                            <td>#</td>
+                            <td class="name">Parameter</td>
+                            <td class="value">Value</td>
+                            <td>Description</td>
+                        </tr>
+						</thead>
+                        <tbody>
+                        	<tr>
+                                <td>1</td>
+                                <td>Background Image</td>
+                                <td>Image</td>
+                                <td>Configure the background image for the section.</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Background Color</td>
+                                <td>Color</td>
+                                <td>Configure the background color of the section. It appears only when background image is not selected.</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Internal Box Space/Padding</td>
+                                <td>Number</td>
+                                <td>Configure internal padding of the box.</td>
+                            </tr>
+                        	<tr>
+                                <td>4</td>
+                                <td>Main Title</td>
+                                <td>Text</td>
+                                <td>Configure the main title of the section.</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Main Title Color</td>
+                                <td>Color</td>
+                                <td>Configure the Main Title Color of the section.</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Blog</td>
+                                <td>blogs</td>
+                                <td>Select the blogs that you would like to display on the homepage.</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Post</td>
+                                <td>Number</td>
+                                <td>Configure the number of posts that you would like to show.</td>
+                            </tr>
+							<tr>
+                                <td>8</td>
+                                <td>Show Author</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show up the author name on the blog.</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Show Date</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show crated date of the blog.</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Show Comment</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show number of conmments on the blog.</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>Show View All Button</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show view all button on the blog.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+	   			</div>
+	   		</div>
+		</section>
+		<section id="ishimanufacturer_setting">
+	  		<div class="main-title"> 
+				<h2>Ishi Manufacturer Block</h2>
+				<p>To configure Ishi Manufacturer Block, navigate to Customizer &gt; Ishi Manufacturer Block and configure required fields. </p>
+			</div>
+			<div class="inner-content">
+		   			<div class="inner-body">
+		   				<img src="asset/img/manufacture-setting.png" alt="">
+		   				<ol>
+		   					<li>Configure required parameters of Ishi Manufacturer Block.</li>
+						</ol>	   				
+						<table class="table table-bordered table-striped">
+							<thead class="table-dark"> 
+								<tr>
+	                            <td>#</td>
+	                            <td class="name">Parameter</td>
+	                            <td class="value">Value</td>
+	                            <td>Description</td>
+	                        </tr>
+							</thead>
+	                        <tbody>
+	                            <tr>
+	                                <td>1</td>
+	                                <td>Brand Image</td>
+	                                <td>Image</td>
+	                                <td>Configure the image of the Manufacturer Logo.</td>
+	                            </tr>
+								<tr>
+	                                <td>2</td>
+	                                <td>Link</td>
+	                                <td>URL</td>
+	                                <td>Configure the URL to which customer should be redirected on clicking the Manufacturer Logo.</td>
+	                            </tr>
+	                        </tbody>
+	                    </table>
+		   			</div>
+		   	</div>
+	    </section>			
+		<section id="footer_setting">
+	  		<div class="main-title"> 
+				<h2>Footer</h2>
+				<p>To configure Footer, navigate to Customizer &gt; Footer and configure required fields. </p>
+				<img src="asset/img/footer-setting1.png" alt="">
+			</div>
+			<div class="inner-content">
+	   			<div class="inner-body">
+	   				<ol>
+	   					<li>Configure required parameters of Footer.</li>
+					</ol>	   				
+					<table class="table table-bordered table-striped">
+						<thead class="table-dark"> 
+							<tr>
+                            <td>#</td>
+                            <td class="name">Parameter</td>
+                            <td class="value">Value</td>
+                            <td>Description</td>
+                        </tr>
+						</thead>
+                        <tbody>
+                        	<tr>
+                                <td>1</td>
+                                <td>Background Image</td>
+                                <td>Image</td>
+                                <td>Configure the background image for the Footer.</td>
+                            </tr> 
+                             <tr>
+                                <td>2</td>
+                                <td>Footer Link Title</td>
+                                <td>Text</td>
+                                <td>Configure the Title of the Footer Link.</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Footer Link</td>
+                                <td>Select</td>
+                                <td>Select a menu for Footer Links.</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Newsletter Title</td>
+                                <td>Text</td>
+                                <td>Configure the newsletter Title.</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Newsletter Sub Title</td>
+                                <td>Text</td>
+                                <td>Configure the Sub newsletter Title.</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Contact Block Title</td>
+                                <td>Text</td>
+                                <td>Configure the Title for Contact, Address, Email.</td>
+                            </tr>
+                             <tr>
+                                <td>7</td>
+                                <td>Show Address</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show Address of the Store.</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Show Contact</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show Contact Number of the Store.</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Show Email ID</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show Email ID of the Store.</td>
+                            </tr>               
+                            <tr>
+                                <td>10</td>
+                                <td>Copyright Text</td>
+                                <td>Text</td>
+                                <td>Configure the copyright text.</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>Show Payment Block</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show Payment Block.</td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>Show Visa Icon</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show Visa icon.</td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>Show PayPal Icon</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show PayPal icon.</td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>Show MasterCard Icon</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show MasterCard icon.</td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>Show Discover Icon</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show Discover icon.</td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>Show AmericanExpress Icon</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show AmericanExpress icon.</td>
+                            </tr>
+                            <tr>
+                                <td>17</td>
+                                <td>Show GoogleWallet Icon</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show GoogleWallet icon.</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="text-center">Content (Payment Logo)</td>
+                            </tr>
+                            <tr>
+                                <td>18</td>
+                                <td>Payment Logo</td>
+                                <td>Image</td>
+                                <td>Configure the image of the Payment Logo.</td>
+                            </tr>
+                            <tr>
+	                            <td colspan="4" class="text-center">Content(Testimonial)</td>
+	                        </tr>
+	                        <tr>
+                                <td>19</td>
+                                <td>Image</td>
+                                <td>Image</td>
+                                <td>Configure the image for the testimonial.</td>
+                            </tr>
+                            <tr>
+                                <td>20</td>
+                                <td>Name</td>
+                                <td>Text</td>
+                                <td>Configure the name for testimonial.</td>
+                            </tr>
+                            <tr>
+                                <td>21</td>
+                                <td>Designation</td>
+                                <td>Text</td>
+                                <td>Configure the Designation for testominal.</td>
+                            </tr>
+                            <tr>
+                                <td>22</td>
+                                <td>Description</td>
+                                <td>Text</td>
+                                <td>Enter the description for the testimonial.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+	   			</div>
+	   		</div>
+		</section>
+		<section id="cookieconsent_setting">
+	  		<div class="main-title">
+				<h2>Cookie Consent</h2>
+				<p>To configure Cookie Consent, navigate to Customizer > Cookie Consent and configure required fields. </p>
+			</div>
+	   		<div class="inner-content">
+	   			<div class="inner-body">
+	   				<img src="asset/img/cookieconsent-setting.png" alt="">
+	   				<ol>
+	   					<li>Configure required parameters of Cookie Consent.</li>
+					</ol>	   				
+					<table class="table table-bordered table-striped">
+						<thead class="table-dark"> 
+							<tr>
+                            <td>#</td>
+                            <td class="name">Parameter</td>
+                            <td class="value">Value</td>
+                            <td>Description</td>
+                        </tr>
+						</thead>
+                        <tbody>
+                        	<tr>
+                                <td>1</td>
+                                <td>Enabled</td>
+                                <td>True / False</td>
+                                <td>Check if you want to enable cookie consent of the Store.</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Position</td>
+                                <td>Select</td>
+                                <td>Select position for the cookie consent. Available options are Bottom or Left or Right.</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Description</td>
+                                <td>Text</td>
+                                <td>Configure the description of cookie consent.</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Button Text</td>
+                                <td>Text</td>
+                                <td>Configure the text of the button.</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Background Color</td>
+                                <td>Color</td>
+                                <td>Configure the background color for the cookie consent.</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Background Opacity</td>
+                                <td>Number</td>
+                                <td>Configure the background opacity for the cookie consent.</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Button Background Color</td>
+                                <td>Color</td>
+                                <td>Configure the button background color for the cookie consent.</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Button Text Color</td>
+                                <td>Color</td>
+                                <td>Configure the button text color for the cookie consent.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+	   			</div>
+	   		</div>
+		</section>
+		<section id="newsletterpopup_setting">
+	  		<div class="main-title">
+				<h2>Newsletter Popup</h2>
+				<p>To configure Newsletter Popup, navigate to Customizer > Newsletter Popup and configure required fields. </p>
+			</div>
+	   		<div class="inner-content">
+	   			<div class="inner-body">
+	   				<img src="asset/img/newsletterpopup-setting.png" alt="">
+	   				<ol>
+	   					<li>Configure required parameters of Newsletter Popup.</li>
+					</ol>	   				
+					<table class="table table-bordered table-striped">
+						<thead class="table-dark"> 
+							<tr>
+                            <td>#</td>
+                            <td class="name">Parameter</td>
+                            <td class="value">Value</td>
+                            <td>Description</td>
+                        </tr>
+						</thead>
+                        <tbody>
+                        	<tr>
+                                <td>1</td>
+                                <td>Enabled</td>
+                                <td>True / False</td>
+                                <td>Check if you want to enable Newsletter Popup of the Store.</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Show All Pages</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show Newsletter Popup on all pages on a store. If unchecked, the popup will be shown only on the Home Page.</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Background Image</td>
+                                <td>Image</td>
+                                <td>Configure the background image for Newsletter Popup.</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Background Color</td>
+                                <td>Color</td>
+                                <td>Configure the background color for Newsletter Popup. It appears only when background image position is not set to cover or background image is not set.</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Text Color</td>
+                                <td>Color</td>
+                                <td>Configure the text color for Newsletter Popup.</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Image Position</td>
+                                <td>Select</td>
+                                <td>Select Image position for the Newsletter Popup. Available options are Cover or Left or Right. The text positions will be set according to the selected image positions.</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Text Position</td>
+                                <td>Select</td>
+                                <td>Select Text position for the Newsletter Popup. Available options are Center or Left or Right. The text position will be applied only when background image position is set to cover.</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Main Title</td>
+                                <td>Text</td>
+                                <td>Configure the Main Title of Newsletter Popup.</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Sub Title</td>
+                                <td>Text</td>
+                                <td>Configure the sub title of the Newsletter Popup.</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Show Social Icon</td>
+                                <td>True / False</td>
+                                <td>Check if you want to show social icon of Newsletter Popup.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+	   			</div>
+	   		</div>
+		</section>
+
+
+	<!-- ===========================Add Filter========================= -->
+		<section id="theme_filter">
+	  		<div class="main-title">
+				<h2>Filters</h2>
+			</div>
+			<div class="inner-content">
+	   			<div class="inner-body">
+	   				<ol>
+		   				<li>Shopify Admin > Go to Products > All product > Select a Product.</li>
+		   				<li>After opening a Product go to Tags section.</li>
+		   				<li>You can add filter tags that allows your customer to filter product according to price, size, color, brand etc.
+		   					<ul>
+		   						<li>
+		   							For example if you want to show following filters like :<br>
+									<strong>Color</strong><br>
+									Red<br>
+									Blue<br>
+									Green<br><br>
+									<strong>Size</strong><br>
+									XS<br>
+									X<br>
+									XL<br>
+									XXL<br><br>
+								</li>
+								<li>
+									The tags that a product must be added to the products must be :<br>
+									color_red<br>
+									color_blue<br>
+									color_green<br>
+									size_xs<br>
+									size_x<br>
+									size_xl<br>
+									size_xxl<br>
+								</li>
+		   					</ul>
+		   				</li>
+		   				<li>To remove any of tags just click on cancel button. Also you can sort tags by Popularity or Alphabetically.</li>
+						<img src="asset/img/filter-setting-1.png" alt="">
+					</ol>
+	   			</div>
+	   		</div>	
+	  	</section>
+
+	<!-- ===========================Size-chart========================= -->
+		<section id="sizechart_setting">
+	  		<div class="main-title">
+				<h2>Size Chart</h2>
+			</div>
+			<div class="inner-content">
+	   			<div class="inner-body">
+	   				<ol>
+	   					<li>Go to Customizer > Theme Settings > Size Chart </li>
+	   					<img src="asset/img/theme-setting7.png" alt="">
+	   					<li>Configure Size Chart as per your requirements.</li>
+	   					<img src="asset/img/sizechart-setting.png" alt="">
+					</ol>
+					<table class="table table-bordered table-striped">
+						<thead class="table-dark"> 
+							<tr>
+	                        <td>#</td>
+	                        <td class="name">Parameter</td>
+	                        <td class="value">Value</td>
+	                        <td>Description</td>
+	                    </tr>
+						</thead>
+	                    <tbody>
+	                        <tr>
+	                            <td>1</td>
+	                            <td>Size Chart</td>
+	                            <td>image</td>
+	                            <td>Set a image for Size Chart.</td>
+	                        </tr>
+	                        <tr>
+	                            <td>2</td>
+	                            <td>Title</td>
+	                            <td>Text</td>
+	                            <td>Configure a title for Size Chart.<br>
+	                            </td>
+	                        </tr>
+							<tr>
+	                            <td>3</td>
+	                            <td>Table</td>
+	                            <td>HTML</td>
+	                            <td>Write the HTML content for the Size Chart table.</td>
+	                        </tr>
+	                        <tr>
+	                            <td>4</td>
+	                            <td>Deacripition</td>
+	                            <td>HTML</td>
+	                            <td>Write the HTML Content for the Size Chart Description.</td>
+	                        </tr>
+	                    </tbody>
+	                </table>
+	                <p>This is the size chart table description HTML code.</p>
+	                <code>
+	                	&lt;table class=&quot;table&quot;&gt;<br>
+						&emsp;&lt;thead class=&quot;thead-light&quot;&gt;<br>&emsp;&emsp;&lt;tr&gt;<br>
+						&emsp;&emsp;&emsp;&lt;th scope=&quot;col&quot;&gt;Size&lt;/th&gt;<br>
+						&emsp;&emsp;&emsp;&lt;th scope=&quot;col&quot;&gt;Chest&lt;/th&gt;<br>
+						&emsp;&emsp;&emsp;&lt;th scope=&quot;col&quot;&gt;Brand Size&lt;/th&gt;<br>
+						&emsp;&emsp;&emsp;&lt;th scope=&quot;col&quot;&gt;Shoulder&lt;/th&gt;<br>
+						&emsp;&emsp;&emsp;&lt;th scope=&quot;col&quot;&gt;Length&lt;/th&gt;<br>
+						&emsp;&emsp;&emsp;&lt;th scope=&quot;col&quot;&gt;Sleeve Length&lt;/th&gt;<br>
+						&emsp;&emsp;&lt;/tr&gt;<br>&emsp;&lt;/thead&gt;<br>
+						&emsp;&lt;tbody&gt;<br>
+						&emsp;&emsp;&lt;tr&gt;<br>
+						&emsp;&emsp;&emsp;&lt;td&gt;38&lt;/td&gt;<br>
+						&emsp;&emsp;&emsp;&lt;td&gt;40.2&lt;/td&gt;<br>
+						&emsp;&emsp;&emsp;&lt;td&gt;38&lt;/td&gt;<br>
+						&emsp;&emsp;&emsp;&lt;td&gt;17.9&lt;/td&gt;<br>
+						&emsp;&emsp;&emsp;&lt;td&gt;29.9&lt;/td&gt;<br>
+						&emsp;&emsp;&emsp;&lt;td&gt;24&lt;/td&gt;<br>
+						&emsp;&emsp;&lt;/tr&gt;<br>
+						&emsp;&emsp;&lt;tr&gt;<br>
+						&emsp;&emsp;&emsp;&lt;td&gt;39&lt;/td&gt;<br>
+						&emsp;&emsp;&emsp;&lt;td&gt;41.3&lt;/td&gt;<br>
+						&emsp;&emsp;&emsp;&lt;td&gt;39&lt;/td&gt;<br>
+						&emsp;&emsp;&emsp;&lt;td&gt;18.2&lt;/td&gt;<br>
+						&emsp;&emsp;&emsp;&lt;td&gt;30.1&lt;/td&gt;<br>
+						&emsp;&emsp;&emsp;&lt;td&gt;24.5&lt;/td&gt;<br>
+						&emsp;&emsp;&lt;/tr&gt;<br>
+						&emsp;&lt;/tbody&gt;<br>
+						&lt;/table&gt;<br>
+	                </code>
+	   			</div>
+	   		</div>
+	   	</section>
+
+	<!-- ===========================Custom Tab========================= -->
+		<section id="theme_custom_tab">
+	  		<div class="main-title">
+				<h2>Custom Product Tab</h2>
+			</div>
+			<div class="inner-content">
+	   			<div class="inner-body">
+	   				<ol>
+		   				<li>Shopify Admin > Go to Products > All product. From the Products page, click the product for which you want to create custom tab.</li>
+		   				<li>In the description section, click on the "<>" icon. which will open the HTML editor as shown in the screenshot.</li>
+		   				<img src="asset/img/custom-tab-setting1.png" alt="">
+		   				<li>To add a new Tab, Copy the following HTML code and paste it in the botton of the description. As shown in the screenshot. <br>
+							<code>&lt;div class="tab"&gt; <br>
+							&lt;div class="title"&gt;<strong>Title goes here.</strong>&lt;/div&gt;<br>
+							&lt;div class="description"&gt;<strong>Description goes here.</strong>&lt;/div&gt;<br>
+							&lt;/div&gt;
+							</code> <br>
+							<strong>Replace the text "Title goes here" and "description goes here" to your desired content before pasting it to the product description section.</strong>
+						</li>
+						<img src="asset/img/custom-tab-setting2.png" alt="">
+					</ol>
+					<strong>
+						<dl>
+							<dt>Note :</dt>
+							<dd>If you want to create multiple tabs, place the HTML code multiple times at the end description. For example if you want to create 3 different tabs in the current product, you need to place the HTML code 3 times. </dd>
+						</dl>
+					</strong>
+	   			</div>
+	   		</div>	
+	  	</section>
+
+		<section id="credits">
+			<div class="main-title">
+				<h2> Credits</h2>
+			</div>
+			<div class="inner-content">
+				<div>
+					<div class="sub-title title-line"> 
+						<h3> Font used :</h3>
+					</div>
+					<div class="inner-body">
+						<ul>
+							<li><a href="https://fonts.google.com/specimen/Poppins">Poppins</a></li>
+							<li><a href="https://fonts.google.com/specimen/Montserrat">Montserrat</a></li>
+						</ul>
+					</div>
+					<div class="sub-title title-line"> 
+						<h3>Icon used :</h3>
+					</div>
+					<div class="inner-body">
+						<ul>
+							<li><a href="https://www.flaticon.com/">Flaticon</a></li>
+							<li><a href="https://fontawesome.com/?from=io">Fontawesome</a></li>
+							<li><a href="https://material.io/tools/icons/?style=baseline">Material icons</a></li>
+						</ul>
+					</div>
+					<div class="sub-title title-line"> 
+						<h3>Image used :</h3>
+					</div>
+					<div class="inner-body">
+						<ul>
+							<li><a href="https://unsplash.com/">Unsplash</a></li>
+							<li><a href="https://www.pexels.com/">Pexels</a></li>
+						</ul>
+					</div>
+					<strong>
+						<dl>
+							<dt>Note :</dt>
+							<dd>The images you see in the screenshots are used for Trendy purposes only, they are not incuded in the download package </dd>
+						</dl>
+					</strong>
+				</div>
+			</div>
+		</section>
+		
+</div>
+
+
+</body>
+</html>

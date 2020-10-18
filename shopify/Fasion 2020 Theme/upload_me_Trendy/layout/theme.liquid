@@ -1,0 +1,266 @@
+<!doctype html>
+  <!--[if IE 9]> <html class="ie9 no-js" lang="{{ shop.locale }}"> <![endif]-->
+  <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="{{ shop.locale }}"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="{{ settings.brand-secondary }}">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="canonical" href="{{ canonical_url }}">
+    
+    <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'vendor.js' | asset_url }}"></script><!--<![endif]-->
+    <!--[if lte IE 9]><script src="{{ 'vendor.js' | asset_url }}"></script><![endif]-->
+
+    {{ 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' | stylesheet_tag }}
+
+    <link href="https://fonts.googleapis.com/css?family={{settings.type_base_family}}:300,400,500,600,700,800" rel="stylesheet" type="text/css" media="all">
+
+    <link href="https://fonts.googleapis.com/css?family={{settings.type_header_family}}:300,400,500,600,700,800" rel="stylesheet" type="text/css" media="all">
+    
+    
+    {% if settings.favicon != blank %}
+      <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+    {% endif %}
+    
+    {% capture seo_title %}
+      {{ page_title }}
+      {% if current_tags %}
+       {%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+      {% endif %}
+      {% if current_page != 1 %}
+        &ndash; {{ 'general.meta.page' | t: page: current_page }}
+      {% endif %}
+    {% endcapture %}
+    <title>{{ seo_title }}</title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {% include 'social-meta-tags' %}
+    {{ 'includes.css' | asset_url | stylesheet_tag }}
+    {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+    {{ 'custom.scss.css' | asset_url | stylesheet_tag }}
+
+    <script>
+      var theme = {
+        strings: {
+          addToCart: {{ 'products.product.add_to_cart' | t | json }},
+          soldOut: {{ 'products.product.sold_out' | t | json }},
+          unavailable: {{ 'products.product.unavailable' | t | json }},
+          showMore: {{ 'general.filters.show_more' | t | json }},
+          showLess: {{ 'general.filters.show_less' | t | json }},
+          addressError: {{ 'sections.map.address_error' | t | json }},
+          addressNoResults: {{ 'sections.map.address_no_results' | t | json }},
+          addressQueryLimit: {{ 'sections.map.address_query_limit_html' | t | json }},
+          authError: {{ 'sections.map.auth_error_html' | t | json }}
+        },
+        moneyFormat: {{ shop.money_format | json }}
+      }
+
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+       
+        
+    </script>
+  	
+    <!--[if (lte IE 9) ]>{{ 'match-media.min.js' | asset_url | script_tag }}<![endif]-->
+
+    {% if template.directory == 'customers' %}
+      <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script><!--<![endif]-->
+      <!--[if lte IE 9]><script src="{{ 'shopify_common.js' | shopify_asset_url }}"></script><![endif]-->
+    {% endif %}
+
+    {{ 'api.jquery.js' | shopify_asset_url | script_tag }}
+
+    <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'quickview.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+
+    <!--[if (gt IE 9)|!(IE)]><!--><script src="{{ 'theme.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+    <!--[if lte IE 9]><script src="{{ 'theme.js' | asset_url }}"></script><![endif]-->
+    <!--[if (gt IE 9)|!(IE)]><!-->
+    <script src="{{ 'shop.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+    <!--[if lte IE 9]><script src="{{ 'shop.js' | asset_url }}"></script><![endif]-->
+    <script src="{{ 'cookie.js' | asset_url }}" defer="defer"></script><!--<![endif]-->
+    <!--[if lte IE 9]><script src="{{ 'cookie.js' | asset_url }}"></script><![endif]-->
+   
+    {{ content_for_header }}
+    
+  </head>
+    <body class="template-{{ template | split: '.' | first | replace: '/', '-' }} {{ page.template_suffix }}">
+    <div class="whole-content">
+
+      <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+      <div id="SearchDrawer" class="search-bar drawer drawer--top">
+        <div class="search-bar__table">
+          <div class="search-bar__table-cell search-bar__form-wrapper">
+            <form class="search search-bar__form" action="/search" method="get" role="search">
+              <button class="search-bar__submit search__submit btn--link" type="submit">
+                {% include 'icon-search' %}
+                <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
+              </button>
+              <input class="search__input search-bar__input" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}">
+            </form>
+          </div>
+          <div class="search-bar__table-cell text-right">
+            <button type="button" class="btn--link search-bar__close js-drawer-close">
+              {% include 'icon-close' %}
+              <span class="icon__fallback-text">{{ 'general.search.close' | t }}</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    
+      <div id="spin-wrapper"></div>
+      <div id="siteloader">
+        <div class="loader ishi-{{settings.loader-main}}"></div>
+      </div>
+      {% section 'header-top' %}
+      <div class="navfullwidth">
+        <div class="page-width">
+          <div class="row">
+            {% section 'Ishi_megamenu' %}
+            {% section 'Ishi_headerlink' %}
+            {% include 'user-info' %}
+          </div>
+        </div>
+      </div>
+      {% if template.name == 'index' %}
+      <div class="slider-banner" style="padding: {{ settings.slider_topbottom_space }}px 0; {% if settings.sliderimage != blank %}background-image: url('{{ settings.sliderimage  | img_url: 'master' }}');{% else %}background-color: {{ settings.slidercolor }};{% endif %}">
+        <div class="page-width">
+          <div class="row">
+            <div class="home-top col-md-9 col-sm-12">
+              {% section 'Ishi_slideshow' %}
+              {% section 'Ishi_categoryblock' %}
+            </div>
+            <div class="home-top-banner col-md-3 col-sm-12">
+              {% section 'Ishi_threebanner' %}
+            </div>
+
+          </div>
+        </div>
+      </div>
+       {% endif %}
+
+      {% if settings.show_breadcrumb %}
+      	{% include 'breadcrumb' %}
+      {% endif %}
+      <div class="page-container" id="PageContainer">
+        
+        <main class="main-content" id="MainContent" role="main">
+            {% if template.name == 'collection' or template.name == 'product' %}
+          		<div class="page-width collection_templete">
+                  <div class="row">
+                    {{ content_for_layout }}
+                  </div>
+              </div>  
+            {% else %}
+            <div class="page-width collection_templete">
+                <div class="row">
+                    <div class="col-md-3 normal-sidebar sidebar_content">
+                      {% section "Ishi_sidebar" %}
+                    </div>
+                    <div class="col-md-9 normal_main_content">
+                      
+                      {{ content_for_layout }}
+                    </div>
+                    <div class="responsive-sidebar sidebar_content {% if settings.disable_mobile == true %} hidden-lg-down{% endif %}"></div>
+                </div>
+              </div>
+            {% endif %}
+        </main>
+        {% if template.name == 'index' %}
+          {% section 'Ishi_manufactureblock' %}
+        {% endif %}
+        {% section 'footer' %}
+      </div>
+
+      
+      {% include 'search-autocomplete' %}
+
+      <a id="slidetop" href="#top" title="top" >{{ 'general.back_to_top.top' | t }}
+      </a>
+      <div id="cartmessage">
+        <div class="title-success hide">{{ 'cart.cart-popup.success' | t }}</div>
+        <div class="title-failed hide">{{ 'cart.cart-popup.failed' | t }}</div>
+      </div>
+      <div id= "wishlistmessage">
+        <div class="title-success hide">{{ 'products.wishlist.success' | t }}</div>
+      </div>
+      
+      {% section 'newsletterpopup' %}
+      
+      {% section 'cookieconsent' %}
+
+      <!-- Size Chart Modal -->
+      <div class="modal fade size-chart-modal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="modal-img col-sm-12 col-md-6">
+                      {% if settings.chart_img %}
+                        {% capture image_size %}{{ settings.chart_max_width }}x{% endcapture %}
+                        {% capture chart_alt %}{{ settings.chart_img.alt }}{% endcapture %}                
+                        <img src="{{ settings.chart_img | img_url: '480x650' }}"
+                        data-widths="[480]"
+                        alt="{{ chart_alt | escape }}">
+                      {% else %}
+                      {% endif %}
+                    </div>
+                    <div class="modal-text col-sm-12 col-md-6">
+                      <div class="custom_size_chart_des">
+                        <h4>{{ shop.name | split: ' ' | first }} {{ settings.sizechart-title }}</h4>
+                        <div class="custom-text-right-table">{{ settings.sizechart-html-table }}</div>
+                        <div class="custom-text-right">{{ settings.sizechart-html }}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div> -->
+              </div>
+          </div>
+      </div>
+
+      
+      <div id="quickviewModal" class="modal fade" role="dialog" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div id="qv-images-container">
+                    <div id="qv-product-cover">
+                      <img id="main-thumbnail" src="#" alt="product-img">
+                    </div>
+                    <div id="qv-thumbnails" class="owl-carousel owl-theme">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div id="qv-text-container">
+                    <div id="qv-productname"></div>
+                    <div id="qv-productprice"></div>
+                    <div id="qv-spr-badge"></div>
+                    <div id="qv-productdescription"></div>
+                    <div id="qv-quantity"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

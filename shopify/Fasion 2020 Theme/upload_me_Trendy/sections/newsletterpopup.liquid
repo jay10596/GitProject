@@ -1,0 +1,317 @@
+{%- assign social_icons = false -%}
+
+{% if
+  settings.social_twitter_link != blank
+  or settings.social_facebook_link != blank
+  or settings.social_pinterest_link != blank
+  or settings.social_instagram_link != blank
+  or settings.social_tumblr_link != blank
+  or settings.social_snapchat_link != blank
+  or settings.social_youtube_link != blank
+  or settings.social_vimeo_link != blank
+  or template.name == 'article'
+  or template.name == 'blog'
+%}
+{%- assign social_icons = true -%}
+{% endif %}
+
+{%- assign show_popup = true -%}
+{% if template.name != 'index' and section.settings.show_onall_page == false %}
+	{%- assign show_popup = false -%}
+{% endif %}
+
+{% if show_popup and section.settings.enable %}
+  <div class="modal fade" id="newsletterPopup" role="dialog">
+    <div class="modal-dialog"> 
+      <!-- Modal content-->
+      <div class="modal-content popup-bg-color{% if section.settings.image_position == 'cover' %} popup-bg-image{% endif %}">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="{% if section.settings.image_position != 'cover' %}valign-wrapper{% endif %} image-{{section.settings.image_position}}">
+            {% if section.settings.image_position == 'left' or section.settings.image_position == 'right' %}
+            <div class="col-md-6 popup-image">
+              <img 
+                   src="{{ section.settings.image | img_url: '500x500' }}"
+                   data-widths="[500]"
+                   data-sizes="auto"
+                   alt="{{ section.settings.image | escape }}">
+            </div>
+            {% endif %}
+            <div class="{% if section.settings.image_position == 'cover' %}col-md-12 col-sm-12{% else %}col-md-6 col-sm-12{% endif %} popup-text popup-text-{{section.settings.text_position}}">
+              {% if section.settings.maintitle != blank %}
+              <h3 class="popup-title">{{ section.settings.maintitle | escape }}</h3>
+              {% endif %}
+              {% if section.settings.subtitle != blank %}
+              <p class="popup-sub-title">{{ section.settings.subtitle | escape }}</p>
+              {% endif %}
+              {% form 'customer' %}
+              {% if form.posted_successfully? %}
+              <p class="form--success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+              {% else %}
+              <div class="input-group">
+                <input type="hidden" name="contact[tags]" value="newsletter">
+                <input type="email"
+                       name="contact[email]"
+                       id="Email"
+                       class="input-group__field newsletter__input"
+                       value="{% if customer %}{{ customer.email }}{% endif %}"
+                       placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+                       autocapitalize="off">
+                <span class="input-group__btn">
+                  <button type="submit" class="btn newsletter__submit" name="commit" id="Subscribe">
+                    <span class="newsletter__submit-text--large hidden-xs-down">{{ 'general.newsletter_form.submit' | t }}</span>
+                    <span class="newsletter__submit-text--large hidden-xs-up">{{ 'general.newsletter_form.go' | t }}</span>
+                  </button>
+                </span>
+              </div>
+              {% endif %}
+              {{ form.errors | default_errors }}
+              {% endform %}
+              {% if section.settings.show_social %}
+              <div class="follow-us">
+                <div id="social-icon-container" class="social-icon-inner">
+                  <div class="social-media-blocks">
+                    {% if social_icons %}
+                    <div class="social-icon-inner">
+                      <div class="header-social">
+                        <ul class="list--inline site-footer__social-icons social-icons">
+                          {% if settings.social_facebook_link != blank %}
+                          <li class="facebook">
+                            <a class="social-icons__link" href="{{ settings.social_facebook_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Facebook' }}" target="_blank">
+                              <i class="fa fa-facebook" aria-hidden="true"></i>
+                              <span class="icon__-text">{{ 'general.social.facebook' | t }}</span>
+                            </a>
+                          </li>
+                          {% endif %}
+                          {% if settings.social_twitter_link != blank %}
+                          <li class="twitter">
+                            <a class="social-icons__link" href="{{ settings.social_twitter_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Twitter' }}" target="_blank">
+                              <i class="fa fa-twitter" aria-hidden="true"></i>
+                              <span class="icon__-text">{{ 'general.social.twitter' | t }}</span>
+                            </a>
+                          </li>
+                          {% endif %}
+                          {% if settings.social_pinterest_link != blank %}
+                          <li class="pinterest">
+                            <a class="social-icons__link" href="{{ settings.social_pinterest_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Pinterest' }}" target="_blank">
+                              <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                              <span class="icon__-text">{{ 'general.social.pinterest' | t }}</span>
+                            </a>
+                          </li>
+                          {% endif %}
+                          {% if settings.social_instagram_link != blank %}
+                          <li class="instagram">
+                            <a class="social-icons__link" href="{{ settings.social_instagram_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Instagram' }}" target="_blank">
+                              <i class="fa fa-instagram" aria-hidden="true"></i>
+                              <span class="icon__-text">{{ 'general.social.instagram' | t }}</span>
+                            </a>
+                          </li>
+                          {% endif %}
+                          {% if settings.social_tumblr_link != blank %}
+                          <li class="tumblr">
+                            <a class="social-icons__link" href="{{ settings.social_tumblr_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Tumblr' }}" target="_blank">
+                              <i class="fa fa-tumblr" aria-hidden="true"></i>
+                              <span class="icon__-text">{{ 'general.social.tumblr' | t }}</span>
+                            </a>
+                          </li>
+                          {% endif %}
+                          {% if settings.social_snapchat_link != blank %}
+                          <li class="snapchat">
+                            <a class="social-icons__link" href="{{ settings.social_snapchat_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Snapchat' }}" target="_blank">
+                              <i class="fa fa-snapchat-ghost" aria-hidden="true"></i>
+                              <span class="icon__-text">{{ 'general.social.snapchat' | t }}</span>
+                            </a>
+                          </li>
+                          {% endif %}
+                          {% if settings.social_youtube_link != blank %}
+                          <li class="youtube">
+                            <a class="social-icons__link" href="{{ settings.social_youtube_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'YouTube' }}" target="_blank">
+                              <i class="fa fa-youtube-play" aria-hidden="true"></i>
+                              <span class="icon__-text">{{ 'general.social.youtube' | t }}</span>
+                            </a>
+                          </li>
+                          {% endif %}
+                          {% if settings.social_vimeo_link != blank %}
+                          <li class="vimeo">
+                            <a class="social-icons__link" href="{{ settings.social_vimeo_link | escape }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: 'Vimeo' }}" target="_blank">
+                              <i class="fa fa-vimeo" aria-hidden="true"></i>
+                              <span class="icon__-text">{{ 'general.social.vimeo' | t }}</span>
+                            </a>
+                          </li>
+                          {% endif %}
+                          {% if template.name == 'blog' or template.name == 'article' %}
+                          <li class="rss">
+                            <a class="social-icons__link" href="{{ shop.url }}{{ blog.url }}.atom" target="_blank">
+                              <i class="fa fa-rss" aria-hidden="true"></i>
+                              <span class="icon__-text">{{ 'general.social.rss' | t }}</span>
+                            </a>
+                          </li>
+                          {% endif %}
+                        </ul>
+                      </div>
+                    </div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+              <div class="dont-show">
+                <label>
+                  <input class="dono-show-check" type="checkbox"> 
+                  <span>{{ 'general.newsletter_popup.dont_show' | t }}</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+{% endif %}
+
+<style type="text/css">
+  .newsletter-popup .popup-bg-image{
+  	background-image: url({{ section.settings.image | img_url: 'master' }});
+  }
+  .newsletter-popup .popup-bg-color{
+    background-color: {{ section.settings.bgcolor }};
+  }
+  .newsletter-popup .modal-content .modal-body .popup-text,
+  .newsletter-popup .modal-content .modal-header .close
+  {
+  	color: {{ section.settings.textcolor }};
+  }
+  
+  @media (max-width: 767px) {/* If media is below 768 */
+    .newsletter-popup .modal-content.popup-bg-image{
+    	background-image: none !important;
+    }
+  }
+</style>
+
+<script type="text/javascript">
+  jQuery(document).ready(function ($) {
+
+    if($.cookie("customer_posted") != "true") {
+      $('#newsletterPopup').modal();
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+
+    $('#newsletterPopup').on('hidden.bs.modal', function () {
+      if($('.dono-show-check').prop("checked") == true) {
+      	$.cookie("customer_posted", "true", {expires:1, path:'/'});
+      }
+    });
+
+    if(urlParams.get('customer_posted') == "true"){
+      var cookieValue = $.cookie("customer_posted");
+      $.cookie("customer_posted", "true", {expires:7, path:'/'});
+    }
+
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Newsletter Popup",
+    "class": "newsletter-popup",
+    "settings": [
+	  {
+        "type": "checkbox",
+        "id": "enable",
+        "label": "Enabled?",
+        "default": false
+      },
+	  {
+        "type": "checkbox",
+        "id": "show_onall_page",
+        "label": "Show on all pages?",
+        "default": false
+      },
+	  {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "info": "Left/Right Image Size: 500px X 500px, Cover Image Size: 750px X 500px"
+      },
+	  {
+        "type": "color",
+        "id": "bgcolor",
+        "label": "Background Color",
+        "default": "#f2f2f2"
+      },
+	  {
+        "type": "color",
+        "id": "textcolor",
+        "label": "Text Color",
+        "default": "#000000"
+      },
+	  {
+        "type": "select",
+        "id": "image_position",
+        "label": "Image Position",
+        "default": "left",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          },
+		  {
+            "value": "cover",
+            "label": "Cover"
+          }
+        ]
+      },
+	  {
+        "type": "select",
+        "id": "text_position",
+        "label": "Text Position",
+		"info": "Applies only when the Image Position option is set cover",
+        "default": "right",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          },
+		  {
+            "value": "center",
+            "label": "Center"
+          }
+        ]
+      },
+	  {
+        "type": "text",
+        "id": "maintitle",
+        "label": "Main Title",
+        "default": "SUBSCRIBE AND GET DISCOUNT!"
+      },
+	  {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Sub Title",
+        "default": "Subscribe to the newsletter to receive updates about new products."
+      },
+	  {
+        "type": "checkbox",
+        "id": "show_social",
+        "label": "Show Social Icons",
+        "default": true
+      }
+    ],
+    "presets": [{
+      "name": "Newsletter Popup",
+      "category": "Special Theme Sections"
+    }]
+  }
+{% endschema %}

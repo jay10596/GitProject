@@ -1,0 +1,50 @@
+{% comment %}
+  Documentation - website/navigation/creating-a-breadcrumb-navigation">http://docs.shopify.com/support/your-website/navigation/creating-a-breadcrumb-navigation
+{% endcomment %}
+
+{% unless template == 'index' %}
+<div class="breadcrumb-container" style="{% if settings.breadcrumb != blank %}background-image: url('{{ settings.breadcrumb | img_url: 'master' }}');{% else %}background-color: {{ settings.breadcrumb_background }};{% endif %}">
+    <nav class="breadcrumbs page-width {% unless settings.show_product_breadcrumb %}breadcrumbs-empty{% endunless %}">
+        {% if template contains 'product' %}
+          <h3 class="head-title">{{ product.title }}</h3>
+        {% else %}
+        	<h3 class="head-title">{{ template | split: '.' | first }} </h3>
+        {% endif %}
+        <a href="/" title="Back to the frontpage">{{ linklists.main-menu.links.first.title }}</a>
+        {% if template contains 'product' %}
+          {% if collection %}            
+            <span class="divider">&dash;</span> 
+            {% if collection.handle %}
+              {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+              {{ collection.title | link_to: url }}
+            {% endif %}
+          {% endif %}
+        
+        {% elsif template contains 'collection' and collection.handle %}
+          {% if current_tags %}
+            <span class="divider">&dash;</span>
+            {% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+            {{ collection.title | link_to: url }}
+          {% else %}
+            <span class="divider">&dash;</span>
+            <span>{{ collection.title | capitalize }}</span>
+          {% endif %}
+      
+        {% elsif template == 'article' %}
+          <span class="divider">&dash;</span> 
+          {{ blog.title | link_to: blog.url }}
+          <span class="divider">&dash;</span>
+          <span>{{ article.title }}</span>
+      
+        {% elsif template contains 'page' %}
+          <span class="divider">&dash;</span>
+          <span>{{ page.title }}</span>
+      
+        {% else %}
+          <span class="divider">&dash;</span>
+          <span>{{ page_title }}</span>
+        {% endif %}
+    </nav>
+</div>
+
+{% endunless %}

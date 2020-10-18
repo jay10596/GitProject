@@ -1,0 +1,101 @@
+<!-- faq page -->
+{% if section.settings.title1 != blank %}
+    <div class="section-header text-center faq-maintitle">
+      <h2 class="home-title">{{ section.settings.title1 | escape }}</h2>
+    </div>
+  {% endif %}
+<div id="faq-block">
+  <div class="faq-container">
+    {% assign i = 1 %}
+    {% if section.blocks.size > 0 %}
+    <div id="accordion-cat" class="panel-group">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'faq-block' %}
+            <div id="faqblock_{{ i }}" class="faqblock-container panel">
+              <div class="panel-heading">
+                <a class="text-container {% if i == 1 %} {% else %}collapsed{% endif %}" data-toggle="collapse" data-target="#collapseOne_{{i}}" data-parent="#accordion-cat">
+                  <h4 class="faq-title">
+                    {% if section.settings.show_counter %}
+                      {%if i <= 9 %}
+                        <span class="category-count">{{i}}.</span>
+                      {% else %}
+                        <span class="category-count">{{i}}.</span>
+                      {% endif %}
+                    {% endif %}
+                   {{ block.settings.faq-title }}</h4>
+                </a>
+              </div>
+              <div id="collapseOne_{{i}}" class="subtitle-container panel-collapse collapse {% if i == 1 %}in{% endif %}">
+                <div class="panel-body">
+                    {% if block.settings.faq-subtitle != blank %}
+                      <p class="faq-subtitle"> {{ block.settings.faq-subtitle }}</p>
+                    {% endif %}
+                </div>
+              </div>   
+              {% assign i = i | plus: 1 %}  
+            </div>
+          {% endcase %}  
+        {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+
+<!-- <script>
+  jQuery(document).ready(function() {
+    $('#faq-block .text-container').click(function() {
+      $(this).addClass('active').attr('aria-expanded','true');
+      $(this).removeClass('active').attr('aria-expanded','false');
+    });
+  });
+</script> -->
+
+
+{% schema %}
+{
+  "name": "FAQs Section",
+  "max_blocks": 30,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title1",
+      "label": "FAQ block title",
+      "default": "FAQs"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_counter",
+      "label": "Show FAQ Count",
+      "default": true
+    }
+  ],
+  "blocks": [
+      { 
+        "type": "faq-block",
+        "name": "FAQs Block",
+        "settings": [
+          {
+            "type": "text",
+            "id": "faq-title",
+            "label": "FAQs Question",
+            "default": "faq-title"
+          },
+          {
+            "type": "html",
+            "id": "faq-subtitle",
+            "label": "FAQs Answer",
+            "default": "faq-subtitle"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "FAQ Page",
+        "category": "Faq"
+      }
+    ]
+}
+{% endschema %}

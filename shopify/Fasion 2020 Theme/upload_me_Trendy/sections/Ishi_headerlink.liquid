@@ -1,0 +1,82 @@
+{% assign blocksize = section.blocks | size %}
+<div data-section-id="{{ section.id }}" data-section-type="headerlink-section" class="headerlink-section hidden-lg-down">
+    <div id="_desktop_link_menu">
+      <div id="ishiheaderlinks_block" class="header-block">
+          <div id="header_ishiheaderlinks">
+            {% if section.blocks.size > 0 %}
+            <ul class="bullet large hidden-xl-down">
+              {% assign counter = 0 %}
+                {% for block in section.blocks %}
+                    {% assign counter = counter | plus: 1 %}  
+                    <li>
+                      {% if counter == 7 %}
+                          <a class="viewmore" href="javascript:void(0)" title="{{ block.settings.title }}"> {{ 'general.module.header-link' | t }}
+                          </a>
+                          <div class="headerlink-dropdown">
+                            <ul>
+                              <li>
+                                <a href="{{ block.settings.button_link }}" title="{{ block.settings.title }}">{{ block.settings.title | escape }}</a>
+                              </li>
+
+                      {% else %}
+                        <a href="{{ block.settings.button_link }}" title="{{ block.settings.title }}">
+                        {{ block.settings.title | escape }}
+                        </a>
+                      {% endif %}
+{% if counter == blocksize and counter >= 7 %}
+                    </ul>
+                  </div>
+              {% endif %}
+                      {% if counter != 7 %}
+                      </li>
+                       {% endif %}  
+                {% endfor %}
+            </ul>
+            <div class="header-link hidden-xl-up">
+                <span class="link-icon">{% include 'icons' with 'link_icon' %}</span>       
+                <h4 class="small-title">{{ 'general.module.menu' | t }}</h4>
+                <ul class="bullet small">
+                  {% assign counter = 0 %}
+                    {% for block in section.blocks %}
+                      {% if block.settings.title != blank %}
+                        <li>
+                          <a href="{{ block.settings.button_link }}">{{ block.settings.title | escape }}</a>
+                        </li>
+                      {% endif %}
+                    {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+          </div>
+      </div>
+    </div>
+    
+</div>
+
+{% schema %}
+  {
+    "name": "Ishi HeaderLink Block",
+    "settings": [
+      
+    ],
+  "blocks": [
+        {
+          "type": "text_block",
+            "name": "link block",
+            "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Link Text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Link"
+        }
+      ]
+    }
+    ]
+  
+  }
+{% endschema %} 

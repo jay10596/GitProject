@@ -1,0 +1,111 @@
+{% paginate blog.articles by 5 %}
+
+
+<div class="blog--list-view">
+    {% for article in blog.articles %}
+      <div class="sdsarticleCat clearfix">
+          <div class="articleContent  col-lg-5 col-md-6 col-sm-12">
+            {% if article.image %}
+              <div class="article__list-image-wrapper js">
+                <a href="{{ article.url }}" class="article__list-image-container">
+                  <img 
+                       class="article__list-image lazyload"
+                       src="{{ article.image | img_url: '588x353' }}"
+                       data-src="{{ img_url }}"
+                       data-widths="[180, 360, 540, 720, 905, 1090, 1296, 1512, 1728, 2048]"
+                       data-aspectratio="{{ article.image.aspect_ratio }}"
+                       data-sizes="auto"
+                       alt="{{ article.image.alt | escape }}">
+                </a>
+              </div>
+
+              <noscript>
+                <p>
+                  <a href="{{ article.url }}">
+                    {{ article | img_url: '588x353', scale: 2 | img_tag: article.title }}
+                  </a>
+                </p>
+              </noscript>
+            {% endif %}
+          </div>
+          <div class="smartblog-desc  col-lg-7 col-md-6 col-sm-12">
+             {% if section.settings.blog_show_author %}
+              <span class="article__author"><i class="fa fa-user"></i>  {{ 'blogs.article.by_author' | t: author: article.author }}</span>
+            {% endif %}
+            <h2 class="article__title"><a href="{{ article.url }}">{{ article.title }}</a></h2>
+            <div class="blog-details">
+              {% if section.settings.blog_show_date %}
+                <span class="article__date">
+                   <i class="fa fa-calendar" aria-hidden="true"></i> {{ article.published_at | time_tag: format: 'month_day_year' }}
+                </span>
+              {% endif %}
+              {% if blog.comments_enabled? and article.comments_count == 0 %}
+                <span>
+                  <a href="{{ article.url }}#comment_form" class="">
+                    <i class="fa fa-comments"></i>{{ 'blogs.comments.title' | t }}
+                  </a>
+                </span>
+              {% endif %}
+
+              {% if blog.comments_enabled? and article.comments_count > 0 %}
+                <span>
+                  <a href="{{ article.url }}#comments" class="blogcomment">
+                   <i class="fa fa-comments"></i>  {{ 'blogs.comments.comments_with_count' | t: count: article.comments_count }}
+                  </a>
+                </span>
+              {% endif %}
+            </div>
+
+            <div class="blog_description">
+              {% if article.excerpt.size > 0 %}
+                {{ article.excerpt }}
+              {% else %}
+                {{ article.content | strip_html | truncate: 120 }}
+              {% endif %}
+            </div>
+
+            {% if article.tags.size > 0 %}
+              <div class="article__tags article__tags--list rte">
+                {{ 'blogs.article.posted_in' | t }}
+                {% for tag in article.tags %}
+                  <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            <div class="sdsreadMore article__meta-buttons">
+                <span>
+                  <a href="{{ article.url }}" class="btn r_more">
+                    {{ 'blogs.article.read_more' | t }}
+                  </a>
+                </span>
+            </div>
+          </div>
+      </div>
+    {% endfor %}
+  {% if paginate.pages > 1 %}
+    {% include 'pagination' %}
+  {% endif %}
+</div>
+
+{% endpaginate %}
+
+{% schema %}
+  {
+    "name": "Blog Pages",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "blog_show_author",
+        "label": "Show Author",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "blog_show_date",
+        "label": "Show Date",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

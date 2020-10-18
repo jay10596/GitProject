@@ -1,0 +1,188 @@
+<div class="grid__item grid__item--{{section.id}} list__item">
+    <div class="grid-view-item{% unless product.available %} product-price--sold-out grid-view-item--sold-out{% endunless %}">
+	  <div class="grid-view-item__link grid-view-item__image-container">
+	    {% capture img_id %}ProductCardImage-{{ section.id }}-{{ product.id }}{% endcapture %}
+	    {% capture wrapper_id %}ProductCardImageWrapper-{{ section.id }}-{{ product.id }}{% endcapture %}
+	    {%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+	      <div class="grid-view-item__image-wrapper js col-sm-3">
+	        <a href="{{ product.url | within: collection }}">
+	          <div class="image-inner">
+	            <div class="reveal">
+              <img 
+               class="grid-view-item__image lazyload {% unless product.images[1] == blank %} main-img {% endunless %}"
+               src="{{ product.featured_image | img_url: '370x480' }}"
+               alt="{{ product.featured_image.alt | escape }}">
+               
+                {% unless product.images[1] == blank %}
+                  <img class="extra-img" src="{{ product.images[1] | img_url: '370x480' }}" alt="{{ product.images[1].alt | escape }}" />
+                {% endunless %}
+                <span class="outstock-overlay">{{ 'products.product.sold_out' | t }}</span>
+            </div>
+	            <div class="hide imgurl-for-quickview">
+	              {% for image in product.images %}
+	                <span>{{image | img_url: '1000x1000'}}</span>
+	              {% endfor %}
+	            </div>
+	            <div class="hide socialurl-for-quickview">
+	              <span>
+	              </span>
+	            </div>
+	          </div>
+	        </a>
+	        {% if product.compare_at_price > product.price %}
+	          <div class="product-flags">
+	            <span class="flag sale">{{ 'products.product.sale' | t }}</span>
+	          </div>
+	        {% endif %}
+	      </div>
+	    
+	      <div class="product-description col-sm-9">
+	        <div class="product-detail">
+	        <a href="{{ product.url | within: collection }}">
+		          <div class="h4 grid-view-item__title">{{ product.title }}</div>
+		      </a>
+	        </div> 
+	        <div class="grid-view-item__meta">
+	          {% include 'product-price' %}
+	        </div>
+	        {%- assign truncate_desc =  settings.show_description -%}
+        <div class="product-desc"> {{ product.description | strip_html | truncate: truncate_desc  }}  </div>
+	        <div class="thumbnail-buttons">
+	          <div class="quick-view">
+	            <button class="btn" data-toggle="modal">{% include 'icons' with 'quickview' %}<span> {{ 'products.product.quickview' | t }}</span></button>
+	          </div>
+	          {% include 'wishlist-icon' %}
+	          <div class="product-block-hover grid-hover">
+	            <div class="qv-cartmain add_to_cart_main grid-cart hide">
+	              <form action="/cart/add" method="post" class="add-to-cart product-form product-form-{{ section.id }}" data-section="{{ section.id }}">
+	                <div class="product-selector">
+	                  {% unless product.options.size == 1 and product.variants[0].title == 'Default Title' %}
+	                    {% for option in product.options_with_values %}
+	                      <div class="selector-wrapper js product-form__item">
+	                        <label {% if option.name == 'default' %} class="label--hidden" {% endif %}>
+	                          {{ option.name }}
+	                        </label>
+	                        <select class="single-option-selector" data-index="option{{ forloop.index }}">
+	                          {% for value in option.values %}
+                                <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value }}</option>
+                              {% endfor %}
+	                        </select>
+	                      </div>
+	                    {% endfor %}
+                      	<div class="ishi-quickview-swatch">
+                          {% for option in product.options_with_values %}
+                            <div class="ishi-custom-swatch">
+                              <label {% if option.name == 'default' %}class="label--hidden" {% endif %}>
+                                {{ option.name }}
+                              </label>
+                              <div class="option-swatch" data-selector="option{{ forloop.index }}">
+                                {% for value in option.values %}
+                                  {% if option.name == 'color' or option.name == 'Color'%}
+                                      <span class="custom-swatch color-swatch{% if option.selected_value == value %} active{% endif %}" style="background-color: {{ value }};" data-index="{{ forloop.index | minus:1}}"></span>
+                                  {% else %}
+                                      <span class="custom-swatch{% if option.selected_value == value %} active{% endif %}" data-index="{{ forloop.index | minus:1}}"> {{ value }}</span>
+                                  {% endif%}
+                                  {% endfor %}
+                              </div>
+                            </div>
+                          {% endfor %}
+                        </div>
+	                  {% endunless %}
+	                </div>
+	                <select name="id" data-section="{{ section.id }}" class="product-form__variants no-js">
+	                  {% for variant in product.variants %}
+	                      <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}" data-available="{% if variant.available %}1{% else %}0{% endif %}" data-price="{{variant.price | money }}" data-compareatprice="{{variant.compare_at_price | money }}" {% unless variant.available %}disabled="disabled"{% endunless %}>{{ variant.title | escape | strip_html | strip_newlines}}</option>
+	                  {% endfor %}
+	                </select>
+	                  <div class="product-form__item product-form__item--quantity">
+	                    <div class="dec button qtyminus">-</div>
+	                    <input name="quantity" value="1" class="quantity">
+	                    <div class="inc button qtyplus">+</div> 
+	                  </div>
+	                <div class="product-form__item product-form__item--submit">
+	                  {% if product.available == false %}
+	                    <a href="javascript: void(0)" class="addToCart  sold-out enable btn">
+	                      <span>
+	                       {{ 'products.product.sold_out' | t }}
+	                     </span>
+	                    </a>
+	                    {% elsif product.variants[1] != blank %}
+	                    <a href="javascript: void(0)" class="qv-addToCart addToCart enable btn">
+	                      <span class="instock">
+	                        {{ 'products.product.add_to_cart' | t }}
+	                      </span>
+	                      <span class="outstock">
+	                       {{ 'products.product.sold_out' | t }}
+	                     </span>
+	                      <span class="adding">
+	                       {{ 'products.product.adding' | t }}
+	                     </span>
+	                    </a>
+	                    {% else %}
+	                    <a href="javascript: void(0)"  class="qv-addToCart addToCart enable btn">
+	                      <span class="instock">
+	                        {{ 'products.product.add_to_cart' | t }}
+	                      </span>
+	                      <span class="adding">
+	                       {{ 'products.product.adding' | t }}
+	                     </span>
+	                    </a>
+	                    {% endif %}
+	                </div>
+	                <input type="hidden" name="return_to" value="back" />
+	              </form>
+	            </div>
+	            <div class="nm-cartmain add_to_cart_main grid-cart">
+	              <form action="/cart/add" method="post" class="add-to-cart product-form product-form-{{ section.id }}" data-section="{{ section.id }}">
+
+	                <select name="prduct-variant" data-section="{{ section.id }}" class="product-form__variants no-js">
+
+	                  {% for variant in product.variants %}
+	                    <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}" data-available="{% if variant.available %}1{% else %}0{% endif %}" {% unless variant.available %}disabled="disabled"{% endunless %}>{{ variant.title | escape | strip_html | strip_newlines}}</option>
+	                  {% endfor %}
+	                </select>
+	                {% for variant in product.variants %}
+	                {% if variant == product.selected_or_first_available_variant %} 
+	                <input type="text" name="prduct-variant" value="{{ variant.id }}" class="product-form__input">
+	                {% endif %}
+	                {% endfor %}
+	                <input type="number" name="product-quantity" value="1" min="1" class="product-form__input">
+
+	                <div class="product-form__item product-form__item--submit">
+	                  {% if product.available == false %}
+	                  <a href="{{ product.url | within: collection }}" class="addToCart sold-out enable btn">
+	                    {% include 'icons' with 'addtocart' %}
+                        <span>
+	                         {{ 'products.product.sold_out' | t }}
+	                    </span>
+	                  </a>
+	                  {% elsif product.variants[1] != blank %}
+	                  <a href="{{ product.url | within: collection }}" class="addToCart enable btn">
+	                    {% include 'icons' with 'addtocart' %}
+                        <span >
+	                       {{ 'products.product.select' | t }}
+	                    </span>
+	                  </a>
+	                  {% else %}
+	                  <a href="javascript: void(0)"  class="nm-addToCart addToCart enable btn">
+	                    {% include 'icons' with 'addtocart' %}
+                        <span>
+	                         {{ 'products.product.add_to_cart' | t }}
+	                    </span>
+	                  </a>
+	                  {% endif %}
+	                </div>
+	              </form>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	      
+	      <noscript>
+	        {% capture image_size %}{{ max_height }}x{{ max_height }}{% endcapture %}
+	        <img class="grid-view-item__image" src="{{ product.featured_image.src | img_url: image_size, scale: 2 }}" alt="{{ product.featured_image.alt }}" style="max-width: {{ max_height | times: product.featured_image.aspect_ratio }}px;">
+	      </noscript>
+	  </div>
+	</div>
+</div>
+     

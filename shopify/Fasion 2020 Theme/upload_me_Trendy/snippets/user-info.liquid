@@ -1,0 +1,28 @@
+<div id= "_desktop_user_info">
+  <div class="user_info">
+    <div id="userinfo-container" class="userinfo-inner">
+      <ul class="header-bar__module header-bar__module--list">
+        {% if shop.customer_accounts_enabled %}
+          {% if customer %}
+            <li class="my-account">
+              <a href="/account">{{ customer.first_name }}</a>
+            </li>
+            <li class="logout">
+              {{ 'layout.customer.log_out' | t | customer_logout_link }}
+            </li>
+            {% else %}
+            <li class="log-in">
+              {{ 'layout.customer.log_in' | t | customer_login_link }}
+            </li>
+            <li class="create_account">
+              {{ 'layout.customer.create_account' | t | customer_register_link }}
+            </li>
+          {% endif %}
+        {% endif %}
+        <li class="wishlist"><a href="/pages/wishlist">{{ 'layout.wishlist.title' | t }}
+        </a>
+      </li>
+    </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,154 @@
+{% if section.settings.message %}
+<style>
+.notification-bar {
+  background-color: {{ section.settings.color_bg }};
+}
+
+.notification-bar__message {
+  color: {{ section.settings.color_text }};
+}
+
+{% if section.settings.logo != blank %}
+.site-header__logo-image {
+  max-width: {{ section.settings.logo_max_width | escape }}px;
+}
+{% endif %}
+
+</style>
+{% endif %}
+
+<div id="header" data-section-id="{{ section.id }}" data-section-type="header-section">
+  <header class="site-header" role="banner">
+    <div class="header-top site-header-inner">
+      <div class="page-width">
+        <div class="row">
+          <div id= "_mobile_user_info"></div>
+          <div class="header-logo-section col-md-4 col-sm-6 col-xs-6 ">
+            {% comment %}
+            Use the uploaded logo from theme settings if enabled.
+            Site name gets precedence with H1 tag on homepage, div on other pages.
+            {% endcomment %}
+            {% if template.name == 'index' %}
+            <h1 class="h2 header__logo" itemscope itemtype="http://schema.org/Organization">
+              {% else %}
+              <div class="h2 header__logo" itemscope itemtype="http://schema.org/Organization">
+                {% endif %}
+                {% if section.settings.logo %}
+                <a href="/" itemprop="url" class="header__logo-image">
+                  {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
+                  {% capture logo_alt %}{{ section.settings.logo.alt | default: shop.name }}{% endcapture %}                
+                  <img src="{{ section.settings.logo | img_url: 'large' }}"
+                  alt="{{ logo_alt | escape }}"
+                  itemprop="logo"
+                  style="max-width: 100%;width: {{ section.settings.logo_max_width }}px;">
+                </a>
+                {% else %}
+                <a class="site-header__logo-link" href="/" itemprop="url">{{ shop.name }}</a>
+                {% endif %}
+                {% if template.name == 'index' %}
+              </h1>
+              {% else %}
+            </div>
+            {% endif %}
+          </div>
+          <div id="_desktop_search" class="site-header__search  hidden-lg-down col-md-4 col-sm-6 col-xs-6">
+            {% include 'search-form' %}
+          </div>
+          <div class="header-right col-md-4 col-sm-6 col-xs-6">
+            {% if section.settings.show_contact and shop.phone != blank %}
+              <div id="ishiheadercontactblock" >
+                <div class="call-img">{% include 'icons' with 'call' %}</div>
+                <div class="contact-content">
+                  <div class="main-title">{{  section.settings.contact-title }}</div>
+                  <div class="call-num">{{shop.phone}}</div>
+                </div>
+              </div>
+            {% endif %}
+            <div id= "_desktop_cart" class="hidden-lg-down ">
+              <div class="cart-display">
+                <div class="cart-title clearfix">
+                  <div class="site-header__cart expand-more">
+                    <div class="cart-img">
+                      <span class="cart-logo">{% include 'icons' with 'cart' %}</span>
+                      <span class="cart-qty"></span>
+                    </div>
+                    <div class="cart-price text-content hidden-lg-down">
+                      <span class="cart-count main-title">
+                        <span class="cart-title">{{ 'cart.general.cart-title' | t }}</span>
+                        <span class="cart__subtotal"></span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div id="cart-container" class="cart-dropdown-inner cart-dropdown">
+                  {% include 'cart-dropdown'%}
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        <div id="mobile_top_menu_wrapper" class="hidden-lg-up" style="display:none;">
+          <div id="top_menu_closer" class="hidden-lg-up">
+            <i class="material-icons"></i>
+          </div>
+          <div  id="_mobile_top_menu" class="js-top-menu mobile"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mobile-width hidden-lg-up">
+    <div class="page-width">
+      <div class="row">
+        <div class="mobile-width-left">
+          <div id="menu-icon" class="menu-icon hidden-lg-up">
+            {% include 'icons' with 'menu' %}
+          </div>
+        </div>
+        <div class="mobile-width-right">
+          <div id= "_mobile_cart"></div>
+          <div id= "_mobile_search"></div>
+          <div id= "_mobile_link_menu"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+</div>
+
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [      
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Theme Logo Image",
+      "info": "Size: 188px X 60px"
+    },
+    {
+      "type": "text",
+      "id": "logo_max_width",
+      "label": "Max Logo Width",
+      "default": "188",
+      "info": "Defined in pixels. Do not add the 'px' unit."
+    },
+    {
+      "type": "header",
+      "content": "Contact Setting"
+    },
+    {
+      "type": "text",
+      "id": "contact-title",
+      "label": "Contact Title",
+      "default": "Contact Us"
+    }, 
+    {
+      "type": "checkbox",
+      "id": "show_contact", 
+      "label": "Show Contact",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

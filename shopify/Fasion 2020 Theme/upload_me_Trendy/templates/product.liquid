@@ -1,0 +1,42 @@
+{% comment %}
+  The contents of the product.liquid template can be found in /sections/product-template.liquid
+{% endcomment %}
+
+{% if settings.product_page_sidebar == "left_sidebar" or  settings.product_page_sidebar == "right_sidebar" %}
+{% assign mid_width = "col-md-9" %}
+{% else %}
+{% assign mid_width = "page-width" %}
+{% endif %}
+<div class="page-width">
+	<div class="row">
+		{% if settings.product_page_sidebar == "left_sidebar" %}
+		<div class="col-md-3 col-sm-12 col-xs-12 normal-sidebar sidebar_content">
+		     {% section "Ishi_sidebar" %}
+		</div>
+		{% endif %}
+		<div class="{{ mid_width }} normal_main_content">
+		{% section 'product-template' %}
+		{% section 'Ishi_relatedproductsblock' %}
+		</div>
+		{% if settings.product_page_sidebar == "right_sidebar" %}
+		 <div class="col-md-3 col-sm-12 col-xs-12 normal-sidebar sidebar_content">
+		     {% section "Ishi_sidebar" %}
+		</div>
+		{% endif %}
+		{% if settings.product_page_sidebar == "right_sidebar" or settings.product_page_sidebar == "left_sidebar" %}
+			<div class="responsive-sidebar sidebar_content {% if settings.disable_mobile == true %} hidden-lg-down{% endif %}"></div>  
+		{% endif %}   
+	</div>
+</div>
+
+<script>
+  // Override default values of shop.strings for each template.
+  // Alternate product templates can change values of
+  // add to cart button, sold out, and unavailable states here.
+  theme.productStrings = {
+    addToCart: {{ 'products.product.add_to_cart' | t | json }},
+    soldOut: {{ 'products.product.sold_out' | t | json }},
+    unavailable: {{ 'products.product.unavailable' | t | json }}
+  }
+
+</script>

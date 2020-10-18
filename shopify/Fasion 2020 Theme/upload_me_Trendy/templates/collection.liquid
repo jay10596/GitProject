@@ -1,0 +1,18 @@
+{% comment %}
+  The contents of the collection.liquid template can be found in /sections/collection-template.liquid
+{% endcomment %}
+
+{% if settings.collection_page_sidebar == "left_sidebar" %}
+	<div class="col-md-3 col-sm-12 col-xs-12 normal-sidebar sidebar_content">
+		{% section "Ishi_sidebar" %}
+	</div>
+{% endif %}	
+<div class="col-md-9 col-sm-12 col-xs-12 normal_main_content">
+	{% section 'collection-template' %}
+</div>
+{% if settings.collection_page_sidebar == "right_sidebar" %}
+ <div class="col-md-3 col-sm-12 col-xs-12 normal-sidebar sidebar_content">
+     {% section "Ishi_sidebar" %}
+</div>
+{% endif %}
+<div class="responsive-sidebar sidebar_content {% if settings.disable_mobile == true %} hidden-lg-down{% endif %}"></div>

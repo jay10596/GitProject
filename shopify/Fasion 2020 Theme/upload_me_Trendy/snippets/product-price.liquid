@@ -1,0 +1,71 @@
+<!-- snippet/product-price.liquid -->
+
+<!-- <div class="flags">
+  <div class="new-lbl">
+    {% assign date_published = product.published_at | date:'%Y%m%d' %}
+      {% assign date_now = 'now' | date:'%Y%m%d' %}
+      {% assign date_difference = date_now | minus: date_published %}
+      {% if date_difference < 2592000  %}new{% endif %}
+  </div>
+  <div class="sale-lbl">
+     {%- assign compare_at_price = product.compare_at_price -%}
+          {%- assign price = product.price -%}
+          {% if compare_at_price > price %}
+      <span class="product-price__sale-label">{{ 'products.product.on_sale' | t }}</span>
+    {% endif %}
+  </div>
+</div> -->
+{% if product.title %}
+  {%- assign compare_at_price = product.compare_at_price -%}
+  {%- assign price = product.price -%}
+  {%- assign price_varies = product.price_varies -%}
+  {%- assign available = product.available -%}
+{% else %}
+  {%- assign compare_at_price = 1999 -%}
+  {%- assign price = 1999 -%}
+  {%- assign price_varies = false -%}
+  {%- assign available = true -%}
+{% endif %}
+
+{%- assign money_price = price | money -%}
+
+{% capture discount %}
+  {{ product.compare_at_price_max | minus:product.price | times:100 | divided_by:product.compare_at_price_max }}%
+{% endcapture %}
+
+
+{% if compare_at_price > price %}
+  {% if price_varies %}
+    <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+    <span class="regular qv-discountprice" style="text-decoration: line-through;">{{ compare_at_price | money }}</span>
+    <span class="discount-percentage">
+      <span>{{ 'products.product.save' | t }}</span>
+      {{ discount }}
+    </span>
+    <span class="product-price__price product-price__sale">
+      <span class="qv-regularprice is-bold">{{ money_price }} </span> 
+    </span>
+  {% else %}
+    <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+    <span class="qv-discountprice regular"  style="text-decoration: line-through;">{{ compare_at_price | money }}</span>
+          <span class="discount-percentage">
+            <span>{{ 'products.product.save' | t }}</span>
+            {{ discount }}
+          </span>
+    <span class="product-price__price product-price__sale">
+       <span class="qv-regularprice is-bold"> {{ money_price }} </span>
+    </span>
+  {% endif %}
+
+{% else %}
+  {% if price_varies %}
+    <span class="qv-regularprice is-bold single-price">{{ money_price }}</span>
+  {% else %}
+    <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
+   <span class="original is-bold qv-regularprice">{{ money_price }}</span>
+  {% endif %}
+{% endif %}
+
+{% unless available %}
+  <span class="product-price__sold-out">{{ 'products.product.sold_out' | t }}</span>
+{% endunless %}
