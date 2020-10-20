@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6ff135b3-4ec4-496e-aed8-e3c8cf9518f9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Extra/Swift/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Extra/Swift/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Extra/Swift/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/Extra/Swift/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,8 +16,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="HTML File" />
         <option value="Liquid File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -65,6 +63,7 @@
       <workItem from="1601294976464" duration="4922000" />
       <workItem from="1601802690636" duration="358000" />
       <workItem from="1602377155539" duration="25379000" />
+      <workItem from="1603201261800" duration="1144000" />
     </task>
     <servers />
   </component>

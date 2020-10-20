@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+
+    <body>
+        <nav>
+            <ul>
+                <li><a href="#">Menu 1</a>
+                    <div>
+                        <ul>
+                            <li><a href="#">This is a long sub item 1</a></li>
+                            <li><a href="#">sub item 2</a></li>
+                            <li><a href="#">sub item 3</a></li>
+                        </ul>
+
+                        <ul>
+                            <li><a href="#">Part two: sub item 1</a></li>
+                            <li><a href="#">Part two: sub item 2</a></li>
+                            <li><a href="#">Part two: sub item 3</a></li>
+                            <li><a href="#">Part two: sub item 4</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#">Menu 2</a>
+                    <div>
+                        <ul>
+                            <li><a href="#">different sub item 1</a></li>
+                            <li><a href="#">different sub item 2</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#">Menu 3</a>
+                    <div>
+                        <ul>
+                            <li><a href="#">some more items 1</a></li>
+                            <li><a href="#">here's a really long item 2</a></li>
+                            <li><a href="#">some more items 3</a></li>
+                            <li><a href="#">short item 4</a></li>
+                            <li><a href="#">some more items 5</a></li>
+                            <li><a href="#">item 6</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </body>
+</html>
+
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    body {
+        background: lightgrey;
+    }
+    nav {
+        position: relative;
+        background: darkgrey;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    li {
+        display: inline-block;
+    }
+
+    a {
+        display: block;
+        padding: 20px;
+        font-family: sans-serif;
+        font-size: 2em;
+        text-decoration: none;
+        color: grey;
+    }
+
+    a:hover {
+        background: #efefef;
+    }
+
+    li div {
+        display: none;
+        width: 100%;
+        height: auto;
+        position: absolute;
+        left: 0;
+        background: hotpink;
+    }
+
+    li:hover div {
+        display: block;
+    }
+
+    li div ul {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    li div ul li {
+        display: block;
+    }
+
+    li div ul li a {
+        font-size: 1em;
+        color: white;
+    }
+</style>
