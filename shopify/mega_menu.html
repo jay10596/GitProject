@@ -6,8 +6,8 @@
     </head>
 
     <body>
-        <nav>
-            <ul>
+        <div class="mega-nav">
+            <ul class="mega-ul">
                 <li><a href="#">Menu 1</a>
                     <div>
                         <ul>
@@ -45,7 +45,7 @@
                     </div>
                 </li>
             </ul>
-        </nav>
+        </div>
     </body>
 </html>
 
@@ -57,20 +57,20 @@
     body {
         background: lightgrey;
     }
-    nav {
+    .mega-nav {
         position: relative;
         background: darkgrey;
     }
 
-    ul {
+    .mega-ul {
         list-style: none;
     }
 
-    li {
+    .mega-ul li {
         display: inline-block;
     }
 
-    a {
+    .mega-ul li a {
         display: block;
         padding: 20px;
         font-family: sans-serif;
@@ -79,11 +79,11 @@
         color: grey;
     }
 
-    a:hover {
+    .mega-ul li a:hover {
         background: #efefef;
     }
 
-    li div {
+    .mega-ul li div {
         display: none;
         width: 100%;
         height: auto;
@@ -92,20 +92,20 @@
         background: hotpink;
     }
 
-    li:hover div {
+    .mega-ul li:hover div {
         display: block;
     }
 
-    li div ul {
+    .mega-ul li div ul {
         display: inline-block;
         vertical-align: top;
     }
 
-    li div ul li {
+    .mega-ul li div ul li {
         display: block;
     }
 
-    li div ul li a {
+    .mega-ul li div ul li a {
         font-size: 1em;
         color: white;
     }
