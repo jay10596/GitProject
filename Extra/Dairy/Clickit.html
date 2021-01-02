@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Demo</title>
+    </head>
+
+    <body>
+        <h1>Dairy Fixes</h1>
+
+        <label for="models">Models</label>
+        <select name="models" id="models" onchange="getModel(this);">
+            <option value="iphone">iPhone</option>
+            <option value="samsung">Samsung</option>
+            <option value="google">Google</option>
+        </select>
+
+        <label for="colors">Colors</label>
+        <select name="colors" id="colors" onchange="getColor(this);">
+            <option value="red">Red</option>
+            <option value="black">Black</option>
+            <option value="blue">Blue</option>
+        </select>
+
+        <button onclick="getVariant();">Purchase!</button>
+    </body>
+</html>
+
+<script>
+    let cases = ['Red/Mette', 'Green/Glossy', 'Yellow/Mette', 'Pink/Mette'];
+
+    for(var i = 0; i < cases.length; i++) {
+        if (cases[i].includes('Glossy')) {
+            continue;
+        }
+        console.log(cases[i].replace('/Mette', ''));
+    }
+
+    var model = "iPhone";
+    var color = "Red";
+    var variant = "iPhone/Red";
+    let variants = [
+        {
+            "id": 1,
+            "title": "iPhone/Red",
+            "variant_id": 64783
+        },
+        {
+            "id": 2,
+            "title": "Google/Black",
+            "variant_id": 24826
+        },
+        {
+            "id": 3,
+            "title": "Samsung/Blue",
+            "variant_id": 98124
+        },
+        {
+            "id": 4,
+            "title": "iPhone/Blue",
+            "variant_id": 22628
+        },
+    ];
+
+    function getColor(c)
+    {
+        color = c.options[c.selectedIndex].text;
+    }
+
+    function getModel(m)
+    {
+        model = m.options[m.selectedIndex].text;
+    }
+
+    function getVariant()
+    {
+        variant = model + '/' + color;
+        for(var i = 0; i < variants.length; i++) {
+            if (variants[i].title == variant) {
+                console.log(variants[i].variant_id);
+                break;
+            }
+        }
+    }
+
+
+</script>

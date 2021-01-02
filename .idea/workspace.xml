@@ -44,9 +44,28 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Extra/Dairy" />
       <recent name="$PROJECT_DIR$/grid" />
       <recent name="$PROJECT_DIR$" />
     </key>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.Countdown Timer.html">
+    <configuration name="Countdown Timer.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GitProject/Extra/Comics Etc/Countdown Timer.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="accordions.liquid" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GitProject/Shopify/accordions.liquid" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="demo.liquid" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/GitProject/Shopify/demo.liquid" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.Countdown Timer.html" />
+        <item itemvalue="JavaScript Debug.accordions.liquid" />
+        <item itemvalue="JavaScript Debug.demo.liquid" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -64,24 +83,11 @@
       <workItem from="1601802690636" duration="358000" />
       <workItem from="1602377155539" duration="25379000" />
       <workItem from="1603201261800" duration="1770000" />
+      <workItem from="1609554829286" duration="8274000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="369" y="89" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601802761312">
-      <screen x="0" y="23" width="1440" height="809" />
-    </state>
-    <state x="369" y="89" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.809@0.23.1440.809" timestamp="1601802761312" />
-    <state x="895" y="358" key="NewPhpFileDialog" timestamp="1600473795698">
-      <screen x="0" y="23" width="1440" height="811" />
-    </state>
-    <state x="895" y="358" key="NewPhpFileDialog/0.23.1440.811@0.23.1440.811" timestamp="1600473795698" />
-    <state x="737" y="156" width="670" height="676" key="search.everywhere.popup" timestamp="1600874822475">
-      <screen x="0" y="23" width="1440" height="809" />
-    </state>
-    <state x="737" y="156" width="670" height="676" key="search.everywhere.popup/0.23.1440.809@0.23.1440.809" timestamp="1600874822475" />
   </component>
 </project>
